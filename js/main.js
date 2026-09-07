@@ -265,4 +265,58 @@
       Array.prototype.forEach.call(counters, runCounter);
     }
   }
+
+  /* ---------- точки под каруселью форматов (только на телефоне) ---------- */
+  var fGrid = document.querySelector('.formats__grid');
+  var fDots = document.getElementById('formatsDots');
+
+  if (fGrid && fDots) {
+    var dotList = [];
+
+    function columnWidth() {
+      var first = fGrid.children[0];
+      if (!first) return 0;
+      var gap = parseFloat(getComputedStyle(fGrid).columnGap) || 0;
+      return first.getBoundingClientRect().width + gap;
+    }
+
+    function syncActive() {
+      var w = columnWidth();
+      if (!w || !dotList.length) return;
+      var i = Math.round(fGrid.scrollLeft / w);
+      if (i > dotList.length - 1) i = dotList.length - 1;
+      dotList.forEach(function (d, k) {
+        d.setAttribute('aria-current', k === i ? 'true' : 'false');
+      });
+    }
+
+    function buildDots() {
+      // карусель включается только в мобильной раскладке
+      var scrolls = fGrid.scrollWidth > fGrid.clientWidth + 4;
+      var need = scrolls ? Math.ceil(fGrid.children.length / 2) : 0;
+
+      if (need === dotList.length) { syncActive(); return; }
+
+      fDots.textContent = '';
+      dotList = [];
+      for (var i = 0; i < need; i++) {
+        (function (index) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', 'Показать формат ' + (index * 2 + 1));
+          b.addEventListener('click', function () {
+            fGrid.scrollTo({ left: columnWidth() * index, behavior: 'smooth' });
+          });
+          fDots.appendChild(b);
+          dotList.push(b);
+        })(i);
+      }
+      syncActive();
+    }
+
+    buildDots();
+    fGrid.addEventListener('scroll', syncActive, { passive: true });
+    window.addEventListener('resize', buildDots);
+    window.addEventListener('load', buildDots);
+  }
 })();

@@ -57,13 +57,23 @@
     <a class="hero__hotspot" href="#menu" aria-label="Выбрать меню"></a>
   </div>
 
-  <!-- на телефоне надписи на фото мелкие, поэтому дублируем их текстом -->
-  <div class="container hero__mobile">
-    <p class="hero__tagline">Кейтеринг для особых событий</p>
-    <p class="hero__lead">Авторские гастрономические решения для ваших праздников, встреч и бизнес-событий</p>
-    <a href="#menu" class="btn btn--primary btn--lg">Выбрать меню
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+  <!-- на телефоне баннер целиком нечитаем, поэтому та же композиция
+       собирается из слоёв: фон, шеф, живой текст -->
+  <div class="hero__mobile">
+    <div class="hero__mobile-bg" aria-hidden="true"></div>
+
+    <p class="hero__script">С любовью<br>к людям<br>и вкусной еде<br><span class="hero__heart">♡</span></p>
+
+    <img class="hero__mobile-chef" src="assets/img/chef.png" alt="" aria-hidden="true">
+
+    <div class="hero__mobile-content">
+      <img class="hero__mobile-logo" src="assets/img/logo-light.png" alt="НЕЧАЙ">
+      <p class="hero__tagline">Кейтеринг для<br>особых событий</p>
+      <p class="hero__lead">Авторские гастрономические решения для ваших праздников, встреч и бизнес-событий</p>
+      <a href="#menu" class="btn btn--primary">Выбрать меню
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -123,28 +133,36 @@
       <a href="#menu" class="format-card">
         <img src="assets/img/format-1.jpg" alt="Фуршеты" data-fallback="photo">
         <div class="format-card__body"><h3>Фуршеты</h3><p>Стильные закуски для любого повода</p></div>
+        <span class="format-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a href="#menu" class="format-card">
         <img src="assets/img/format-2.jpg" alt="Банкеты" data-fallback="photo">
         <div class="format-card__body"><h3>Банкеты</h3><p>Элегантные решения для масштабных событий</p></div>
+        <span class="format-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a href="#menu" class="format-card">
         <img src="assets/img/format-3.jpg" alt="Доставка" data-fallback="photo">
         <div class="format-card__body"><h3>Доставка</h3><p>Кейтеринг в удобном формате</p></div>
+        <span class="format-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a href="#menu" class="format-card">
         <img src="assets/img/format-4.jpg" alt="Десерты" data-fallback="photo">
         <div class="format-card__body"><h3>Десерты</h3><p>Сладкие акценты вашего праздника</p></div>
+        <span class="format-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a href="#menu" class="format-card">
         <img src="assets/img/format-5.jpg" alt="Бизнес-мероприятия" data-fallback="photo">
         <div class="format-card__body"><h3>Бизнес-мероприятия</h3><p>Профессиональный сервис</p></div>
+        <span class="format-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a href="#menu" class="format-card">
         <img src="assets/img/format-6.jpg" alt="Частные события" data-fallback="photo">
         <div class="format-card__body"><h3>Частные события</h3><p>Свадьбы, дни рождения, юбилеи</p></div>
+        <span class="format-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
+
+    <div class="formats__dots" id="formatsDots" aria-hidden="true"></div>
   </div>
 </section>
 
