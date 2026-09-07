@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>НЕЧАЙ — кейтеринг для особых событий</title>
+<meta name="description" content="Кейтеринг «Нечай» — авторские гастрономические решения для праздников, встреч и бизнес-событий. Фуршеты, банкеты, десерты, гастробоксы, доставка.">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#hero" class="logo" aria-label="Нечай — на главную">
+      <img src="assets/img/logo.png" alt="НЕЧАЙ" class="logo__img" data-fallback="logo">
+      <span class="logo__text" hidden><span>НЕ</span><span>ЧАЙ</span></span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#about">О нас</a>
+      <a href="#menu">Меню</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+      <a href="social.html" class="nav__btn">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+        Соцсети
+      </a>
+    </nav>
+
+    <div class="header__actions">
+      <a href="tel:+79624908483" class="header__phone">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span>+7 (962) 490-84-83</span>
+      </a>
+      <span class="header__divider"></span>
+      <a href="#contacts" class="btn btn--primary btn--sm">Заказать кейтеринг</a>
+    </div>
+
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <h1 class="visually-hidden">НЕЧАЙ — кейтеринг для особых событий</h1>
+
+  <div class="hero__pic">
+    <img src="assets/img/hero.jpg"
+         alt="Кейтеринг «Нечай» — авторские гастрономические решения для праздников, встреч и бизнес-событий">
+    <!-- кликабельная область поверх нарисованной кнопки «Выбрать меню» -->
+    <a class="hero__hotspot" href="#menu" aria-label="Выбрать меню"></a>
+  </div>
+
+  <!-- на телефоне надписи на фото мелкие, поэтому дублируем их текстом -->
+  <div class="container hero__mobile">
+    <p class="hero__tagline">Кейтеринг для особых событий</p>
+    <p class="hero__lead">Авторские гастрономические решения для ваших праздников, встреч и бизнес-событий</p>
+    <a href="#menu" class="btn btn--primary btn--lg">Выбрать меню
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="features">
+  <div class="container features__grid">
+    <article class="feature">
+      <span class="feature__icon">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 24h24M6 24a10 10 0 0 1 20 0M16 14V9M14 8.5h4"/></svg>
+      </span>
+      <div>
+        <h3>Авторская кухня</h3>
+        <p>Современные вкусы<br>и эстетика в каждой детали</p>
+      </div>
+    </article>
+    <article class="feature">
+      <span class="feature__icon">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 25C7 18 11 9 24 7c1 12-5 18-12 18Z"/><path d="M8 26c2-5 5-9 10-12"/></svg>
+      </span>
+      <div>
+        <h3>Свежие продукты</h3>
+        <p>Только отборные<br>и сезонные ингредиенты</p>
+      </div>
+    </article>
+    <article class="feature">
+      <span class="feature__icon">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="m16 7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5-4.7-4.6 6.5-.9L16 7Z"/></svg>
+      </span>
+      <div>
+        <h3>Индивидуальный подход</h3>
+        <p>Под любой формат<br>и масштаб события</p>
+      </div>
+    </article>
+    <article class="feature">
+      <span class="feature__icon">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M16 25S6 19.5 6 13.4A5.4 5.4 0 0 1 16 10a5.4 5.4 0 0 1 10 3.4C26 19.5 16 25 16 25Z"/></svg>
+      </span>
+      <div>
+        <h3>Забота о каждом госте</h3>
+        <p>Ваш праздник —<br>наша главная задача</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ FORMATS ============ -->
+<section class="formats" id="formats">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Наши форматы</h2>
+      <a href="#menu" class="section-link">Все услуги
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="formats__grid">
+      <a href="#menu" class="format-card">
+        <img src="assets/img/format-1.jpg" alt="Фуршеты" data-fallback="photo">
+        <div class="format-card__body"><h3>Фуршеты</h3><p>Стильные закуски для любого повода</p></div>
+      </a>
+      <a href="#menu" class="format-card">
+        <img src="assets/img/format-2.jpg" alt="Банкеты" data-fallback="photo">
+        <div class="format-card__body"><h3>Банкеты</h3><p>Элегантные решения для масштабных событий</p></div>
+      </a>
+      <a href="#menu" class="format-card">
+        <img src="assets/img/format-3.jpg" alt="Доставка" data-fallback="photo">
+        <div class="format-card__body"><h3>Доставка</h3><p>Кейтеринг в удобном формате</p></div>
+      </a>
+      <a href="#menu" class="format-card">
+        <img src="assets/img/format-4.jpg" alt="Десерты" data-fallback="photo">
+        <div class="format-card__body"><h3>Десерты</h3><p>Сладкие акценты вашего праздника</p></div>
+      </a>
+      <a href="#menu" class="format-card">
+        <img src="assets/img/format-5.jpg" alt="Бизнес-мероприятия" data-fallback="photo">
+        <div class="format-card__body"><h3>Бизнес-мероприятия</h3><p>Профессиональный сервис</p></div>
+      </a>
+      <a href="#menu" class="format-card">
+        <img src="assets/img/format-6.jpg" alt="Частные события" data-fallback="photo">
+        <div class="format-card__body"><h3>Частные события</h3><p>Свадьбы, дни рождения, юбилеи</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container about__inner">
+    <div class="about__media">
+      <img src="assets/img/about.jpg" alt="Кейтеринг Нечай" data-fallback="photo">
+      <div class="about__badge"><strong>8+</strong><span>лет на кухне<br>и рядом с гостем</span></div>
+    </div>
+    <div class="about__text">
+      <p class="eyebrow">О нас</p>
+      <h2 class="section-title">Кейтеринг, который<br>говорит на языке вкуса</h2>
+      <p>«Нечай» — это команда, для которой еда начинается не с рецепта, а с человека. Мы придумываем гастрономию под ваш повод: от небольшого фуршета в офисе до свадьбы на сто гостей.</p>
+      <p>Каждое меню собирается индивидуально. Мы сами закупаем продукты, сами готовим и сами накрываем стол — чтобы вы отвечали только за настроение.</p>
+      <ul class="about__list">
+        <li>Собственное производство и логистика</li>
+        <li>Фуршетное накрытие, посуда, мебель и оборудование</li>
+        <li>Работаем ежедневно с 8:00 до 21:00</li>
+      </ul>
+      <a href="#contacts" class="btn btn--primary">Обсудить событие</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Меню</p>
+      <h2 class="section-title">Что мы готовим</h2>
+      <p class="section-sub">Ниже — основные разделы. Полный актуальный каталог с фото, составом и корзиной живёт в нашем меню на Menusa.</p>
+    </div>
+
+    <div class="menu__grid">
+      <article class="menu-card">
+        <header><h3>Канапе</h3><span>от 3 300 ₽</span></header>
+        <ul>
+          <li><span>«Под игристое»</span><b>5 000 ₽</b></li>
+          <li><span>«Под крепкое»</span><b>5 500 ₽</b></li>
+          <li><span>«Столичный»</span><b>3 300 ₽</b></li>
+          <li><span>100 сыров</span><b>7 000 ₽</b></li>
+          <li><span>Сырный бум</span><b>4 000 ₽</b></li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <header><h3>Тарталетки</h3><span>от 4 000 ₽</span></header>
+        <ul>
+          <li><span>Тарталетки, 3 вкуса / 36 шт</span><b>4 000 ₽</b></li>
+          <li><span>Тарталетки, 5 вкусов / 36 шт</span><b>5 000 ₽</b></li>
+          <li><span>«Царские», 3 вкуса / 36 шт</span><b>5 500 ₽</b></li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <header><h3>Сытное</h3><span>от 3 200 ₽</span></header>
+        <ul>
+          <li><span>Сэндвич Премиум</span><b>3 500 ₽</b></li>
+          <li><span>Тако «Цезарь»</span><b>4 500 ₽</b></li>
+          <li><span>Рулеты «Пикантные»</span><b>3 500 ₽</b></li>
+          <li><span>Жульены, 16 шт</span><b>3 200 ₽</b></li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <header><h3>Десерты</h3><span>от 3 200 ₽</span></header>
+        <ul>
+          <li><span>Панна-котта, 16 шт</span><b>3 500 ₽</b></li>
+          <li><span>Лимонный пудинг, 16 шт</span><b>3 500 ₽</b></li>
+          <li><span>Тирамису, 24 шт</span><b>4 000 ₽</b></li>
+          <li><span>Сырно-фруктовые стаканчики</span><b>3 200 ₽</b></li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <header><h3>Штучные закуски</h3><span>от 120 ₽</span></header>
+        <ul>
+          <li><span>Канапе «Классическое»</span><b>160 ₽</b></li>
+          <li><span>Канапе «Италия»</span><b>120 ₽</b></li>
+          <li><span>Канапе «Бри &amp; Berry»</span><b>120 ₽</b></li>
+          <li><span>Карамельный сырный трюфель</span><b>150 ₽</b></li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <header><h3>Гастробоксы</h3><span>от 4 500 ₽</span></header>
+        <ul>
+          <li><span>Сырно-фруктовый</span><b>4 500 ₽</b></li>
+          <li><span>Сырно-мясной</span><b>5 000 ₽</b></li>
+          <li><span>«Кавказ», халяль</span><b>6 000 ₽</b></li>
+          <li><span>Prosecco box</span><b>5 500 ₽</b></li>
+        </ul>
+      </article>
+
+      <article class="menu-card menu-card--wide">
+        <header><h3>Аренда и накрытие</h3><span>от 500 ₽</span></header>
+        <ul class="menu-card__cols">
+          <li><span>Фуршетное накрытие</span><b>10 000 ₽</b></li>
+          <li><span>Кофемашина</span><b>5 000 ₽</b></li>
+          <li><span>Термопод</span><b>2 000 ₽</b></li>
+          <li><span>Стол фуршетный</span><b>1 000 ₽</b></li>
+          <li><span>Стол барный</span><b>1 000 ₽</b></li>
+          <li><span>Кресло со спинкой</span><b>500 ₽</b></li>
+          <li><span>Скамья складная</span><b>500 ₽</b></li>
+          <li><span>Чайная пара</span><b>60 ₽</b></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="menu__cta">
+      <p>Цены указаны за сет. Состав любого сета меняем под ваш формат.</p>
+      <a href="https://menusa.app/11ef7fbb8e6bce53bec017064314d17f" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+        Открыть полное меню
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEPS ============ -->
+<section class="steps">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Как мы работаем</p>
+      <h2 class="section-title">Четыре шага до вашего стола</h2>
+    </div>
+    <div class="steps__grid">
+      <article class="step"><span class="step__num">01</span><h3>Знакомство</h3><p>Обсуждаем повод, число гостей, площадку и бюджет.</p></article>
+      <article class="step"><span class="step__num">02</span><h3>Меню</h3><p>Собираем персональную подборку и присылаем смету.</p></article>
+      <article class="step"><span class="step__num">03</span><h3>Подготовка</h3><p>Закупаем продукты, готовим, планируем логистику и накрытие.</p></article>
+      <article class="step"><span class="step__num">04</span><h3>Событие</h3><p>Приезжаем, красиво накрываем и остаёмся рядом до финала.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Портфолио</p>
+        <h2 class="section-title">Наши события</h2>
+      </div>
+      <a href="#contacts" class="section-link">Хочу так же
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="portfolio__grid" id="portfolioGrid">
+      <a class="pf" href="assets/img/portfolio/01.jpg" data-lightbox><img src="assets/img/portfolio/01.jpg" alt="Тарталетки" data-fallback="photo"><span class="pf__cap">Тарталетки</span></a>
+      <a class="pf" href="assets/img/portfolio/02.jpg" data-lightbox><img src="assets/img/portfolio/02.jpg" alt="Фуршетный сет" data-fallback="photo"><span class="pf__cap">Фуршетный сет</span></a>
+      <a class="pf" href="assets/img/portfolio/03.jpg" data-lightbox><img src="assets/img/portfolio/03.jpg" alt="Гастробокс" data-fallback="photo"><span class="pf__cap">Гастробокс</span></a>
+      <a class="pf" href="assets/img/portfolio/04.jpg" data-lightbox><img src="assets/img/portfolio/04.jpg" alt="Канапе-сет" data-fallback="photo"><span class="pf__cap">Канапе-сет</span></a>
+      <a class="pf" href="assets/img/portfolio/05.jpg" data-lightbox><img src="assets/img/portfolio/05.jpg" alt="Десертный стол" data-fallback="photo"><span class="pf__cap">Десертный стол</span></a>
+      <a class="pf" href="assets/img/portfolio/06.jpg" data-lightbox><img src="assets/img/portfolio/06.jpg" alt="Кофе-брейк" data-fallback="photo"><span class="pf__cap">Кофе-брейк</span></a>
+      <a class="pf" href="assets/img/portfolio/07.jpg" data-lightbox><img src="assets/img/portfolio/07.jpg" alt="Закуски к игристому" data-fallback="photo"><span class="pf__cap">Закуски к игристому</span></a>
+      <a class="pf" href="assets/img/portfolio/08.jpg" data-lightbox><img src="assets/img/portfolio/08.jpg" alt="Выездное накрытие" data-fallback="photo"><span class="pf__cap">Выездное накрытие</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Отзывы</p>
+      <h2 class="section-title">Что говорят гости</h2>
+    </div>
+
+    <div class="reviews__grid">
+      <figure class="review">
+        <div class="review__stars">★★★★★</div>
+        <blockquote>Заказывали фуршет на 40 человек. Всё привезли вовремя, накрыли красиво, гости весь вечер спрашивали, кто готовил. Канапе «Под игристое» разобрали первыми.</blockquote>
+        <figcaption><strong>Анна</strong><span>день рождения</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="review__stars">★★★★★</div>
+        <blockquote>Делали кофе-брейки на трёхдневную конференцию. Ни одной накладки, всё чётко по таймингу. Отдельное спасибо за то, что учли вегетарианцев.</blockquote>
+        <figcaption><strong>Дмитрий</strong><span>корпоративное мероприятие</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="review__stars">★★★★★</div>
+        <blockquote>Свадьба на 80 гостей. Меню собрали под нас, попробовали заранее, поменяли пару позиций. Десертный стол был просто произведением искусства.</blockquote>
+        <figcaption><strong>Мария и Сергей</strong><span>свадьба</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="contacts" id="contacts">
+  <div class="container contacts__inner">
+    <div class="contacts__info">
+      <p class="eyebrow">Контакты</p>
+      <h2 class="section-title">Расскажите<br>о вашем событии</h2>
+      <p class="contacts__lead">Ответим в течение рабочего дня, соберём меню и пришлём смету. Консультация бесплатная.</p>
+
+      <ul class="contacts__list">
+        <li>
+          <span class="contacts__ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><span>Телефон</span><a href="tel:+79624908483">+7 (962) 490-84-83</a></div>
+        </li>
+        <li>
+          <span class="contacts__ico contacts__ico--wa"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg></span>
+          <div><span>WhatsApp</span><a href="https://wa.me/79624908483" target="_blank" rel="noopener">Написать и заказать</a></div>
+        </li>
+        <li>
+          <span class="contacts__ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><span>Почта</span><a href="mailto:hello@nechay.ru">hello@nechay.ru</a></div>
+        </li>
+        <li>
+          <span class="contacts__ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><span>Часы работы</span><b>Ежедневно, 8:00 — 21:00</b></div>
+        </li>
+        <li>
+          <span class="contacts__ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><span>Работаем</span><b>Город и область, выезд на площадку</b></div>
+        </li>
+      </ul>
+
+      <div class="contacts__socials">
+        <a href="https://menusa.app/11ef7fbb8e6bce53bec017064314d17f" target="_blank" rel="noopener">Меню</a>
+        <a href="https://www.instagram.com/nechai.catering" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://t.me/VkusLifeNechaeva" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://wa.me/79624908483" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="social.html">Все соцсети</a>
+      </div>
+    </div>
+
+    <form class="form" id="orderForm" novalidate>
+      <h3 class="form__title">Заявка на кейтеринг</h3>
+
+      <label class="field">
+        <span>Ваше имя</span>
+        <input type="text" name="name" placeholder="Как к вам обращаться" required>
+      </label>
+
+      <label class="field">
+        <span>Телефон</span>
+        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Формат</span>
+          <select name="format">
+            <option>Фуршет</option>
+            <option>Банкет</option>
+            <option>Кофе-брейк</option>
+            <option>Доставка / гастробоксы</option>
+            <option>Свадьба</option>
+            <option>Другое</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Гостей</span>
+          <input type="number" name="guests" min="1" placeholder="30">
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Дата события</span>
+        <input type="date" name="date">
+      </label>
+
+      <label class="field">
+        <span>Комментарий</span>
+        <textarea name="comment" rows="3" placeholder="Площадка, пожелания по меню, аллергии…"></textarea>
+      </label>
+
+      <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
+      <p class="form__note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+      <p class="form__status" id="formStatus" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo logo--footer">
+        <img src="assets/img/logo-light.png" alt="НЕЧАЙ" class="logo__img" data-fallback="logo">
+        <span class="logo__text" hidden><span>НЕ</span><span>ЧАЙ</span></span>
+      </span>
+      <p>Кейтеринг для особых событий.<br>С любовью к людям и вкусной еде.</p>
+    </div>
+
+    <nav class="footer__nav">
+      <a href="#about">О нас</a>
+      <a href="#menu">Меню</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+      <a href="social.html">Соцсети</a>
+    </nav>
+
+    <div class="footer__contact">
+      <a href="tel:+79624908483">+7 (962) 490-84-83</a>
+      <a href="mailto:hello@nechay.ru">hello@nechay.ru</a>
+      <a href="https://menusa.app/11ef7fbb8e6bce53bec017064314d17f" target="_blank" rel="noopener">Полное меню</a>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>© <span id="year">2026</span> Кейтеринг «Нечай»</span>
+    <span>Ежедневно 8:00 — 21:00</span>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox__close" aria-label="Закрыть">&times;</button>
+  <button class="lightbox__nav lightbox__nav--prev" aria-label="Назад">&#8249;</button>
+  <img src="" alt="">
+  <button class="lightbox__nav lightbox__nav--next" aria-label="Вперёд">&#8250;</button>
+</div>
+
+
+<!-- быстрый заказ в WhatsApp -->
+<a class="wa-fab" href="https://wa.me/79624908483" target="_blank" rel="noopener"
+   aria-label="Написать в WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+  <span>Заказать в WhatsApp</span>
+</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
