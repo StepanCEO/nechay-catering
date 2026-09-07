@@ -888,36 +888,30 @@ button{ font:inherit; }
     display:flex; align-items:stretch;
   }
 
-  /* тёплый свет зала — тот же приём, что на баннере */
-  .hero__mobile-bg{
-    position:absolute; inset:0; z-index:0;
-    background-color:#3E1F10;
-    background-image:
-      radial-gradient(circle at 16% 18%, rgba(255,206,140,.42), transparent 11%),
-      radial-gradient(circle at 32% 54%, rgba(255,190,120,.28), transparent 9%),
-      radial-gradient(circle at 52% 14%, rgba(255,224,170,.34), transparent 8%),
-      radial-gradient(circle at 70% 44%, rgba(255,198,132,.26), transparent 12%),
-      radial-gradient(circle at 86% 20%, rgba(255,214,158,.34), transparent 9%),
-      radial-gradient(circle at 92% 74%, rgba(255,186,116,.28), transparent 11%),
-      radial-gradient(circle at 44% 88%, rgba(214,150,88,.32), transparent 14%),
-      linear-gradient(158deg, #5A2E17 0%, #8A5327 52%, #B8814F 100%);
+  /* фон — фрагмент того же снимка, что на десктопе:
+     склеены полосы баннера без вшитых надписей */
+  .hero__mobile-bg{ position:absolute; inset:0; z-index:0; overflow:hidden; }
+  .hero__mobile-bg img{
+    width:100%; height:100%; object-fit:cover; object-position:72% center;
   }
   .hero__mobile-bg::after{
     content:""; position:absolute; inset:0;
-    box-shadow:inset 0 0 130px rgba(46,20,8,.62);
+    background:
+      linear-gradient(90deg, rgba(48,22,10,.82) 0%, rgba(48,22,10,.5) 42%, rgba(48,22,10,.34) 100%),
+      linear-gradient(180deg, rgba(48,22,10,.3) 0%, rgba(48,22,10,0) 40%, rgba(48,22,10,.42) 100%);
   }
 
   .hero__script{
-    position:absolute; z-index:2; left:10px; top:12px;
+    position:absolute; z-index:2; left:8px; top:10px;
     margin:0; transform:rotate(-8deg);
-    font-family:var(--font-script); font-size:14px; line-height:1.4;
+    font-family:var(--font-script); font-size:12.5px; line-height:1.35;
     color:#fff; text-shadow:0 3px 14px rgba(40,18,8,.6);
   }
-  .hero__heart{ display:inline-block; margin-left:1.6em; font-size:.9em; }
+  .hero__heart{ display:inline-block; margin-left:1.2em; font-size:.9em; }
 
   .hero__mobile-chef{
-    position:absolute; z-index:1; left:-1%; top:9%;
-    height:130%; width:auto; max-width:none;
+    position:absolute; z-index:1; left:1%; top:11%;
+    height:128%; width:auto; max-width:none;
     filter:drop-shadow(0 18px 34px rgba(40,18,8,.5));
   }
 
