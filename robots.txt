@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://stepanceo.github.io/nechay-catering/sitemap.xml
+Sitemap: https://nechay.online/sitemap.xml
