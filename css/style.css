@@ -262,7 +262,7 @@ button{ font:inherit; }
 }
 .about__media{ position:relative; }
 .about__media img{
-  width:100%; aspect-ratio:4/4.4; object-fit:cover;
+  width:100%; aspect-ratio:9/10; object-fit:cover;
   border-radius:var(--radius); box-shadow:var(--shadow-lg);
 }
 .about__badge{
@@ -635,7 +635,7 @@ button{ font:inherit; }
 
 /* блок «О нас» */
 .about__media > .ph-box{
-  aspect-ratio:4/4.4; border-radius:var(--radius); box-shadow:var(--shadow-lg);
+  aspect-ratio:9/10; border-radius:var(--radius); box-shadow:var(--shadow-lg);
 }
 
 /* ============================================================
