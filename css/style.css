@@ -1045,3 +1045,41 @@ button{ font:inherit; }
     width:20px; border-radius:4px; background:var(--orange);
   }
 }
+
+/* ============================================================
+   КАРТИНКИ В <picture>
+   Обёртка не должна ломать раскладку карточек — тянем её
+   на весь блок, дальше размерами управляет сам <img>.
+   ============================================================ */
+.format-card picture,
+.pf picture{ display:block; width:100%; height:100%; }
+
+/* ============================================================
+   ШТУЧНЫЕ ЗАКУСКИ — полоска над меню
+   ============================================================ */
+.menu__canape{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:14px; margin:0 0 40px;
+}
+.menu__canape li{
+  width:104px; height:104px; border-radius:50%;
+  background:var(--white); border:1px solid var(--line);
+  display:grid; place-items:center; overflow:hidden;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease),
+             border-color .3s var(--ease);
+}
+.menu__canape li:hover{
+  transform:translateY(-4px) scale(1.04);
+  box-shadow:var(--shadow); border-color:var(--orange-soft);
+}
+.menu__canape img{
+  width:88%; height:88%; object-fit:contain;
+}
+
+@media (max-width:760px){
+  .menu__canape{ gap:10px; margin-bottom:30px; }
+  .menu__canape li{ width:78px; height:78px; }
+}
+@media (max-width:400px){
+  .menu__canape li{ width:68px; height:68px; }
+}

@@ -43,35 +43,37 @@ assets/img/         картинки (см. ниже)
 Исходники (`логотип.jpg`, `екатерина.jpg`, `пример сайта.jpg`) лежат в корне проекта.
 Перед заливкой на хостинг их можно удалить — сайту они не нужны.
 
-### Фото еды и портфолио — временные
+### Фото еды и портфолио
 
-Плитки «Наши форматы» и портфолио заполнены снимками из открытых банков
-(через Openverse). Все они под **CC0 / Public Domain** — коммерческое
-использование разрешено, указывать авторство не требуется. Это заглушки
-приличного вида: как будут свои съёмки, просто положи файлы с теми же именами.
+Все снимки — настоящие, из папки `фото/` (она в `.gitignore`, на хостинг
+не уходит: там 34 МБ исходников, сайту нужны только обработанные копии).
 
-| Файл | Что на снимке | Лицензия | Источник |
-|---|---|---|---|
-| `format-1.jpg` | Фуршет | CC0 | [ссылка](https://www.rawpixel.com/image/6066512/free-public-domain-cc0-photo) |
-| `format-2.jpg` | Кофе-брейк | CC0 | [ссылка](https://www.rawpixel.com/image/5974819/coffee-break-with-small-sweet-pastry) |
-| `format-3.jpg` | Клиентские дни | CC0 | [ссылка](https://stocksnap.io/photo/waiter-drink-EWJPCRAR3S) |
-| `format-4.jpg` | Фуршеты в горах | CC0 | [ссылка](https://stocksnap.io/photo/outdoor-picnic-WSRRONVX8J) |
-| `format-5.jpg` | Доставка гастробоксов | CC0 | [ссылка](https://stocksnap.io/photo/picnic-food-ZMJIH1NTZ1) |
-| `portfolio/01.jpg` | Тарталетки | CC0 | [ссылка](https://www.rawpixel.com/image/8734502/salmon-tartlets) |
-| `portfolio/02.jpg` | Фуршетный сет | CC0 | [ссылка](https://stocksnap.io/photo/appetizer-food-3DK61FKKYZ) |
-| `portfolio/03.jpg` | Гастробокс | CC0 | [ссылка](https://www.rawpixel.com/image/3282990/free-photo-image-food-dinner-antipasto) |
-| `portfolio/04.jpg` | Канапе-сет | CC0 | [ссылка](https://www.rawpixel.com/image/5959340/free-public-domain-cc0-photo) |
-| `portfolio/05.jpg` | Десертный стол | CC0 | [ссылка](https://commons.wikimedia.org/w/index.php?curid=130122199) |
-| `portfolio/06.jpg` | Банкетный стол | CC0 | [ссылка](https://www.rawpixel.com/image/5913869/image-background-cloud-public-domain) |
-| `portfolio/07.jpg` | Закуски к игристому | CC0 | [ссылка](https://www.rawpixel.com/image/6041641/photo-image-public-domain-food-burger) |
-| `portfolio/08.jpg` | Выездное накрытие | PDM | [ссылка](https://www.flickr.com/photos/38144472@N04/14556840399) |
+Каждая картинка лежит в двух форматах — **AVIF и WebP**:
 
-Размеры, если будешь менять: плитки форматов — 800×633 (горизонтальные),
-портфолио — 900×900 квадратные, а `01` и `06` вертикальные 640×1318
-(в сетке они вытянуты на две строки).
+```html
+<picture>
+  <source srcset="assets/img/format-1.avif" type="image/avif">
+  <img src="assets/img/format-1.webp" alt="Фуршет" loading="lazy">
+</picture>
+```
 
-Форматов пять — по списку из «инфа сайт.docx». Если добавишь шестой,
-поправь число колонок у `.formats__grid` в `css/style.css`.
+Браузер сам берёт AVIF, если умеет (в среднем на 17% легче), иначе WebP.
+JPEG не держим — WebP понимают все актуальные браузеры.
+Все 19 картинок вместе весят около 1,2 МБ, грузятся лениво.
+
+| Что | Файлы | Размер кадра |
+|---|---|---|
+| Плитки «Наши форматы» | `format-1…5` | 800×633 |
+| Портфолио | `portfolio/01…08` | 900×900, а `01` и `06` — 640×1318 |
+| Штучные закуски | `canape/1…6` | 420×420 |
+
+Штучные закуски — это студийные кадры на белом, они стоят кружком
+над меню (блок `.menu__canape`). Если будешь менять — нужен именно
+белый фон, иначе круги перестанут читаться.
+
+Чтобы заменить любое фото: положи исходник и пересобери оба формата
+в тех же размерах. Кадрирование по центру со смещением вверх —
+еда обычно в верхней половине кадра.
 
 ## Блок «О нас»
 
