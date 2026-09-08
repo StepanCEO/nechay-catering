@@ -5,11 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>НЕЧАЙ — кейтеринг для особых событий</title>
 <meta name="description" content="Кейтеринг «Нечай» — авторские гастрономические решения для праздников, встреч и бизнес-событий. Фуршеты, банкеты, десерты, гастробоксы, доставка.">
+<link rel="canonical" href="https://stepanceo.github.io/nechay-catering/">
+<meta name="theme-color" content="#FDF9F4">
+
+<!-- карточка для мессенджеров и соцсетей -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Кейтеринг «Нечай»">
+<meta property="og:url" content="https://stepanceo.github.io/nechay-catering/">
+<meta property="og:title" content="НЕЧАЙ — кейтеринг для особых событий">
+<meta property="og:description" content="Кейтеринг «Нечай» — фуршеты, кофе-брейки, гастробоксы и выездные мероприятия. Собственный цех в Минераловодском районе, работаем по Ставропольскому краю и СКФО.">
+<meta property="og:image" content="https://stepanceo.github.io/nechay-catering/assets/img/og-cover.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Кейтеринг «Нечай» — фуршетный стол">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="НЕЧАЙ — кейтеринг для особых событий">
+<meta name="twitter:description" content="Кейтеринг «Нечай» — фуршеты, кофе-брейки, гастробоксы и выездные мероприятия. Собственный цех в Минераловодском районе, работаем по Ставропольскому краю и СКФО.">
+<meta name="twitter:image" content="https://stepanceo.github.io/nechay-catering/assets/img/og-cover.jpg">
+
 <link rel="icon" href="assets/img/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 
@@ -61,7 +81,10 @@
        собирается из слоёв: фон, шеф, живой текст -->
   <div class="hero__mobile">
     <div class="hero__mobile-bg" aria-hidden="true">
-      <img src="assets/img/hero-mobile.jpg" alt="">
+      <picture>
+        <source srcset="assets/img/hero-mobile.avif" type="image/avif">
+        <img src="assets/img/hero-mobile.webp" alt="">
+      </picture>
     </div>
 
     <p class="hero__script">С любовью<br>к людям<br>и вкусной еде<br><span class="hero__heart">♡</span></p>
@@ -320,16 +343,41 @@
       </a>
     </div>
 
-    <div class="portfolio__grid" id="portfolioGrid">
-      <a class="pf" href="assets/img/portfolio/01.webp" data-lightbox><picture><source srcset="assets/img/portfolio/01.avif" type="image/avif"><img src="assets/img/portfolio/01.webp" alt="Тарталетки" loading="lazy"></picture><span class="pf__cap">Тарталетки</span></a>
-      <a class="pf" href="assets/img/portfolio/02.webp" data-lightbox><picture><source srcset="assets/img/portfolio/02.avif" type="image/avif"><img src="assets/img/portfolio/02.webp" alt="Фуршетный сет" loading="lazy"></picture><span class="pf__cap">Фуршетный сет</span></a>
-      <a class="pf" href="assets/img/portfolio/03.webp" data-lightbox><picture><source srcset="assets/img/portfolio/03.avif" type="image/avif"><img src="assets/img/portfolio/03.webp" alt="Гастробокс" loading="lazy"></picture><span class="pf__cap">Гастробокс</span></a>
-      <a class="pf" href="assets/img/portfolio/04.webp" data-lightbox><picture><source srcset="assets/img/portfolio/04.avif" type="image/avif"><img src="assets/img/portfolio/04.webp" alt="Канапе-сет" loading="lazy"></picture><span class="pf__cap">Канапе-сет</span></a>
-      <a class="pf" href="assets/img/portfolio/05.webp" data-lightbox><picture><source srcset="assets/img/portfolio/05.avif" type="image/avif"><img src="assets/img/portfolio/05.webp" alt="Десертный стол" loading="lazy"></picture><span class="pf__cap">Десертный стол</span></a>
-      <a class="pf" href="assets/img/portfolio/06.webp" data-lightbox><picture><source srcset="assets/img/portfolio/06.avif" type="image/avif"><img src="assets/img/portfolio/06.webp" alt="Кофе-брейк" loading="lazy"></picture><span class="pf__cap">Банкетный стол</span></a>
-      <a class="pf" href="assets/img/portfolio/07.webp" data-lightbox><picture><source srcset="assets/img/portfolio/07.avif" type="image/avif"><img src="assets/img/portfolio/07.webp" alt="Закуски к игристому" loading="lazy"></picture><span class="pf__cap">Закуски к игристому</span></a>
-      <a class="pf" href="assets/img/portfolio/08.webp" data-lightbox><picture><source srcset="assets/img/portfolio/08.avif" type="image/avif"><img src="assets/img/portfolio/08.webp" alt="Выездное накрытие" loading="lazy"></picture><span class="pf__cap">Выездное накрытие</span></a>
+    <div class="portfolio__filter" role="group" aria-label="Фильтр по формату">
+      <button type="button" data-filter="all" aria-pressed="true">Все</button>
+      <button type="button" data-filter="furshet" aria-pressed="false">Фуршеты</button>
+      <button type="button" data-filter="banket" aria-pressed="false">Банкеты</button>
+      <button type="button" data-filter="dostavka" aria-pressed="false">Доставка</button>
+      <button type="button" data-filter="vyezd" aria-pressed="false">Выездные</button>
     </div>
+
+    <div class="portfolio__grid" id="portfolioGrid">
+      <a class="pf" href="assets/img/portfolio/01.webp" data-lightbox data-cat="furshet"><picture><source srcset="assets/img/portfolio/01.avif" type="image/avif"><img src="assets/img/portfolio/01.webp" alt="Фуршет с цветочным декором" loading="lazy"></picture><span class="pf__cap">Фуршет с цветочным декором</span></a>
+      <a class="pf" href="assets/img/portfolio/02.webp" data-lightbox data-cat="furshet"><picture><source srcset="assets/img/portfolio/02.avif" type="image/avif"><img src="assets/img/portfolio/02.webp" alt="Ярусный фуршет" loading="lazy"></picture><span class="pf__cap">Ярусный фуршет</span></a>
+      <a class="pf" href="assets/img/portfolio/03.webp" data-lightbox data-cat="furshet"><picture><source srcset="assets/img/portfolio/03.avif" type="image/avif"><img src="assets/img/portfolio/03.webp" alt="Фуршет на корпоративе" loading="lazy"></picture><span class="pf__cap">Фуршет на корпоративе</span></a>
+      <a class="pf" href="assets/img/portfolio/04.webp" data-lightbox data-cat="furshet"><picture><source srcset="assets/img/portfolio/04.avif" type="image/avif"><img src="assets/img/portfolio/04.webp" alt="Канапе и фрукты" loading="lazy"></picture><span class="pf__cap">Канапе и фрукты</span></a>
+      <a class="pf" href="assets/img/portfolio/05.webp" data-lightbox data-cat="furshet"><picture><source srcset="assets/img/portfolio/05.avif" type="image/avif"><img src="assets/img/portfolio/05.webp" alt="Накрытие у колонн" loading="lazy"></picture><span class="pf__cap">Накрытие у колонн</span></a>
+      <a class="pf" href="assets/img/portfolio/06.webp" data-lightbox data-cat="furshet"><picture><source srcset="assets/img/portfolio/06.avif" type="image/avif"><img src="assets/img/portfolio/06.webp" alt="Канапе с лососем" loading="lazy"></picture><span class="pf__cap">Канапе с лососем</span></a>
+      <a class="pf" href="assets/img/portfolio/07.webp" data-lightbox data-cat="banket"><picture><source srcset="assets/img/portfolio/07.avif" type="image/avif"><img src="assets/img/portfolio/07.webp" alt="Банкетный стол на веранде" loading="lazy"></picture><span class="pf__cap">Банкетный стол на веранде</span></a>
+      <a class="pf" href="assets/img/portfolio/08.webp" data-lightbox data-cat="banket"><picture><source srcset="assets/img/portfolio/08.avif" type="image/avif"><img src="assets/img/portfolio/08.webp" alt="Закуски и цветы" loading="lazy"></picture><span class="pf__cap">Закуски и цветы</span></a>
+      <a class="pf" href="assets/img/portfolio/09.webp" data-lightbox data-cat="banket"><picture><source srcset="assets/img/portfolio/09.avif" type="image/avif"><img src="assets/img/portfolio/09.webp" alt="Фруктовая подача" loading="lazy"></picture><span class="pf__cap">Фруктовая подача</span></a>
+      <a class="pf" href="assets/img/portfolio/10.webp" data-lightbox data-cat="banket"><picture><source srcset="assets/img/portfolio/10.avif" type="image/avif"><img src="assets/img/portfolio/10.webp" alt="Восточный стол" loading="lazy"></picture><span class="pf__cap">Восточный стол</span></a>
+      <a class="pf" href="assets/img/portfolio/11.webp" data-lightbox data-cat="banket"><picture><source srcset="assets/img/portfolio/11.avif" type="image/avif"><img src="assets/img/portfolio/11.webp" alt="Тарталетки с икрой" loading="lazy"></picture><span class="pf__cap">Тарталетки с икрой</span></a>
+      <a class="pf" href="assets/img/portfolio/12.webp" data-lightbox data-cat="banket"><picture><source srcset="assets/img/portfolio/12.avif" type="image/avif"><img src="assets/img/portfolio/12.webp" alt="Десерты в бокалах" loading="lazy"></picture><span class="pf__cap">Десерты в бокалах</span></a>
+      <a class="pf" href="assets/img/portfolio/13.webp" data-lightbox data-cat="dostavka"><picture><source srcset="assets/img/portfolio/13.avif" type="image/avif"><img src="assets/img/portfolio/13.webp" alt="Гастробоксы" loading="lazy"></picture><span class="pf__cap">Гастробоксы</span></a>
+      <a class="pf" href="assets/img/portfolio/14.webp" data-lightbox data-cat="dostavka"><picture><source srcset="assets/img/portfolio/14.avif" type="image/avif"><img src="assets/img/portfolio/14.webp" alt="Канапе и сэндвичи в боксах" loading="lazy"></picture><span class="pf__cap">Канапе и сэндвичи в боксах</span></a>
+      <a class="pf" href="assets/img/portfolio/15.webp" data-lightbox data-cat="dostavka"><picture><source srcset="assets/img/portfolio/15.avif" type="image/avif"><img src="assets/img/portfolio/15.webp" alt="Сборка гастробокса" loading="lazy"></picture><span class="pf__cap">Сборка гастробокса</span></a>
+      <a class="pf" href="assets/img/portfolio/16.webp" data-lightbox data-cat="vyezd"><picture><source srcset="assets/img/portfolio/16.avif" type="image/avif"><img src="assets/img/portfolio/16.webp" alt="Стол в саду" loading="lazy"></picture><span class="pf__cap">Стол в саду</span></a>
+      <a class="pf" href="assets/img/portfolio/17.webp" data-lightbox data-cat="vyezd"><picture><source srcset="assets/img/portfolio/17.avif" type="image/avif"><img src="assets/img/portfolio/17.webp" alt="Фуршет среди деревьев" loading="lazy"></picture><span class="pf__cap">Фуршет среди деревьев</span></a>
+      <a class="pf" href="assets/img/portfolio/18.webp" data-lightbox data-cat="vyezd"><picture><source srcset="assets/img/portfolio/18.avif" type="image/avif"><img src="assets/img/portfolio/18.webp" alt="Свадебный фуршет на природе" loading="lazy"></picture><span class="pf__cap">Свадебный фуршет на природе</span></a>
+      <a class="pf" href="assets/img/portfolio/19.webp" data-lightbox data-cat="vyezd"><picture><source srcset="assets/img/portfolio/19.avif" type="image/avif"><img src="assets/img/portfolio/19.webp" alt="Выездное накрытие" loading="lazy"></picture><span class="pf__cap">Выездное накрытие</span></a>
+      <a class="pf" href="assets/img/portfolio/20.webp" data-lightbox data-cat="vyezd"><picture><source srcset="assets/img/portfolio/20.avif" type="image/avif"><img src="assets/img/portfolio/20.webp" alt="Welcome-зона на улице" loading="lazy"></picture><span class="pf__cap">Welcome-зона на улице</span></a>
+    </div>
+
+    <div class="portfolio__more">
+      <button type="button" id="portfolioMore" class="btn btn--ghost">Показать ещё</button>
+    </div>
+  </div>
   </div>
 </section>
 
@@ -491,6 +539,6 @@
   <span>Заказать в WhatsApp</span>
 </a>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=4"></script>
 </body>
 </html>

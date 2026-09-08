@@ -319,4 +319,53 @@
     window.addEventListener('resize', buildDots);
     window.addEventListener('load', buildDots);
   }
+
+  /* ---------- фильтр портфолио и «Показать ещё» ---------- */
+  var pfGrid   = document.getElementById('portfolioGrid');
+  var pfFilter = document.querySelector('.portfolio__filter');
+  var pfMore   = document.getElementById('portfolioMore');
+
+  if (pfGrid && pfFilter && pfMore) {
+    var STEP = 8;                    // сколько плиток показываем сразу
+    var pfItems = Array.prototype.slice.call(pfGrid.querySelectorAll('.pf'));
+    var active = 'all';
+    var expanded = false;
+
+    function renderPf() {
+      var shown = 0;
+      pfItems.forEach(function (el) {
+        var match = active === 'all' || el.dataset.cat === active;
+        var visible = match && (expanded || shown < STEP);
+        if (match) shown++;
+        el.hidden = !visible;
+        // плитка могла ни разу не попасть в поле зрения наблюдателя,
+        // тогда она осталась бы прозрачной после показа
+        if (visible) el.classList.add('is-visible');
+      });
+      var total = pfItems.filter(function (el) {
+        return active === 'all' || el.dataset.cat === active;
+      }).length;
+      var rest = total - STEP;
+      pfMore.hidden = expanded || rest <= 0;
+      if (rest > 0) pfMore.textContent = 'Показать ещё ' + rest;
+    }
+
+    pfFilter.addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-filter]');
+      if (!btn) return;
+      active = btn.dataset.filter;
+      expanded = false;
+      Array.prototype.forEach.call(pfFilter.querySelectorAll('button'), function (b) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      renderPf();
+    });
+
+    pfMore.addEventListener('click', function () {
+      expanded = true;
+      renderPf();
+    });
+
+    renderPf();
+  }
 })();

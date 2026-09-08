@@ -360,12 +360,34 @@ button{ font:inherit; }
 .portfolio__grid{
   display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
 }
+.portfolio__filter{
+  display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px;
+}
+.portfolio__filter button{
+  padding:10px 22px; border-radius:999px; cursor:pointer;
+  border:1px solid var(--line); background:transparent;
+  font-size:14.5px; font-weight:600; color:var(--ink-soft);
+  transition:background .25s var(--ease), border-color .25s var(--ease),
+             color .25s var(--ease);
+}
+.portfolio__filter button:hover{ color:var(--brown-dark); border-color:var(--orange-soft); }
+.portfolio__filter button[aria-pressed="true"]{
+  background:var(--orange); border-color:var(--orange); color:#fff;
+}
+.portfolio__more{ display:flex; justify-content:center; margin-top:30px; }
+.btn--ghost{
+  background:transparent; border:1px solid var(--line); color:var(--brown-dark);
+  box-shadow:none;
+}
+.btn--ghost:hover{
+  background:var(--orange); border-color:var(--orange); color:#fff;
+  transform:translateY(-2px);
+}
 .pf{
   position:relative; display:block; overflow:hidden;
   border-radius:var(--radius); aspect-ratio:1/1; background:var(--cream-3);
   box-shadow:var(--shadow);
 }
-.pf:nth-child(1), .pf:nth-child(6){ grid-row:span 2; aspect-ratio:1/2.06; }
 .pf img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
 .pf::after{
   content:""; position:absolute; inset:0; opacity:0;
@@ -563,7 +585,6 @@ button{ font:inherit; }
   .format-card{ aspect-ratio:1/1.15; }
 
   .portfolio__grid{ grid-template-columns:repeat(2,1fr); }
-  .pf:nth-child(1), .pf:nth-child(6){ grid-row:span 1; aspect-ratio:1/1; }
 
   .section-head{ flex-direction:column; align-items:flex-start; }
   .section-head:not(.section-head--center) > div > .section-title::after,
@@ -907,6 +928,7 @@ button{ font:inherit; }
   /* фон — фрагмент того же снимка, что на десктопе:
      склеены полосы баннера без вшитых надписей */
   .hero__mobile-bg{ position:absolute; inset:0; z-index:0; overflow:hidden; }
+  .hero__mobile-bg picture{ display:block; width:100%; height:100%; }
   .hero__mobile-bg img{
     width:100%; height:100%; object-fit:cover; object-position:72% center;
   }
