@@ -158,6 +158,13 @@
   /* ---------- форма заявки ---------- */
   var WHATSAPP_NUMBER = '79624908483';
 
+  /* Куда дублировать заявку на почту. Пока пусто — форма работает
+     по-старому, только открывает WhatsApp. Вставь сюда адрес формы
+     с formspree.io (вида https://formspree.io/f/xxxxxxxx), и копия
+     каждой заявки начнёт приходить на почту, даже если человек
+     передумает отправлять сообщение в WhatsApp. */
+  var FORM_ENDPOINT = '';
+
   var form = document.getElementById('orderForm');
   var status = document.getElementById('formStatus');
 
@@ -191,10 +198,29 @@
     if (form.date.value) lines.push('Дата: ' + form.date.value);
     if (form.comment.value.trim()) lines.push('Комментарий: ' + form.comment.value.trim());
 
+    // копия на почту уходит сразу, не дожидаясь действий в WhatsApp
+    if (FORM_ENDPOINT) {
+      var payload = {
+        name: name, phone: phone, format: form.format.value,
+        guests: form.guests.value, date: form.date.value,
+        comment: form.comment.value.trim(),
+        _subject: 'Заявка с сайта «Нечай» — ' + name
+      };
+      try {
+        fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(function () { /* почта не ушла — WhatsApp всё равно откроется */ });
+      } catch (e) { /* старый браузер без fetch */ }
+    }
+
     var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
     window.open(url, '_blank', 'noopener');
 
-    status.textContent = 'Открыли WhatsApp с вашей заявкой — осталось нажать «Отправить».';
+    status.textContent = FORM_ENDPOINT
+      ? 'Заявка отправлена. Открыли WhatsApp — можно сразу написать нам.'
+      : 'Открыли WhatsApp с вашей заявкой — осталось нажать «Отправить».';
     form.reset();
   });
 
