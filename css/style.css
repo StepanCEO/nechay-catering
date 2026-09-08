@@ -228,7 +228,7 @@ button{ font:inherit; }
    ============================================================ */
 .formats{ padding:46px 0 80px; }
 .formats__grid{
-  display:grid; grid-template-columns:repeat(6, 1fr); gap:11px;
+  display:grid; grid-template-columns:repeat(5, 1fr); gap:12px;
 }
 .format-card{
   position:relative; display:block; border-radius:var(--radius);
@@ -278,7 +278,12 @@ button{ font:inherit; }
 
 .about__text .section-title{ margin-bottom:22px; }
 .about__text p{ color:var(--ink-soft); margin-bottom:16px; max-width:56ch; }
-.about__list{ margin:22px 0 30px; display:grid; gap:11px; }
+.about__list{ margin:22px 0 26px; display:grid; gap:11px; }
+.about__quote{
+  position:relative; margin:0 0 30px; padding-left:20px;
+  border-left:2px solid var(--orange-soft);
+  font-size:15.5px; line-height:1.65; color:var(--brown-dark);
+}
 .about__list li{
   position:relative; padding-left:30px; font-size:15px; color:var(--ink);
 }
@@ -377,23 +382,26 @@ button{ font:inherit; }
 .pf:hover .pf__cap{ opacity:1; transform:none; }
 
 /* ============================================================
-   REVIEWS
+   КЛИЕНТЫ
    ============================================================ */
-.reviews{ padding:84px 0; background:var(--cream-2); }
-.reviews__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-.review{
-  margin:0; background:var(--white); border:1px solid var(--line);
-  border-radius:var(--radius); padding:30px 28px;
-  display:flex; flex-direction:column; gap:16px;
+.clients{ padding:84px 0; background:var(--cream-2); }
+.clients__grid{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
 }
-.review__stars{ color:var(--orange-light); letter-spacing:.18em; font-size:15px; }
-.review blockquote{
-  margin:0; font-size:15.5px; line-height:1.7; color:var(--ink);
-  flex:1;
+.clients__grid li{
+  display:grid; place-items:center; text-align:center;
+  min-height:104px; padding:18px 22px;
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+  font-family:var(--font-display); font-size:clamp(19px, 1.5vw, 26px);
+  color:var(--brown-dark); line-height:1.2;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
 }
-.review figcaption{ display:flex; flex-direction:column; gap:2px; padding-top:14px; border-top:1px solid var(--line); }
-.review figcaption strong{ color:var(--brown-dark); font-size:15px; }
-.review figcaption span{ font-size:13px; color:var(--ink-soft); }
+.clients__grid li:hover{
+  transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--orange-soft);
+}
+.clients__note{
+  margin-top:24px; text-align:center; color:var(--ink-soft); font-size:15px;
+}
 
 /* ============================================================
    CONTACTS
@@ -504,6 +512,7 @@ button{ font:inherit; }
    ============================================================ */
 @media (max-width:1180px){
   .formats__grid{ grid-template-columns:repeat(3,1fr); gap:14px; }
+  .social-stats__grid{ grid-template-columns:repeat(3,1fr); }
 }
 
 @media (max-width:1024px){
@@ -529,7 +538,7 @@ button{ font:inherit; }
   .menu__grid{ grid-template-columns:repeat(2,1fr); }
   .menu-card--wide{ grid-column:span 2; }
   .steps__grid{ grid-template-columns:repeat(2,1fr); }
-  .reviews__grid{ grid-template-columns:1fr; }
+  .clients__grid{ grid-template-columns:repeat(2, 1fr); }
   .contacts__inner{ grid-template-columns:1fr; gap:44px; }
   .footer__inner{ grid-template-columns:1fr 1fr; }
 }
@@ -553,7 +562,7 @@ button{ font:inherit; }
   .section-head:not(.section-head--center) > div > .section-title::after,
   .section-head:not(.section-head--center) > .section-title::after{ display:none; }
 
-  .formats, .menu, .about, .steps, .portfolio, .reviews, .contacts{ padding:56px 0; }
+  .formats, .menu, .about, .steps, .portfolio, .clients, .contacts{ padding:56px 0; }
   .menu__grid{ grid-template-columns:1fr; }
   .menu-card--wide{ grid-column:span 1; }
   .menu-card__cols{ grid-template-columns:1fr; }
@@ -786,7 +795,7 @@ button{ font:inherit; }
    ЦИФРЫ
    ============================================================ */
 .social-stats{ padding:clamp(54px, 5vw, 84px) 0; background:var(--cream-2); }
-.social-stats__grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; }
+.social-stats__grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
 .stat{
   background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
   padding:32px 26px; text-align:center;
@@ -812,7 +821,7 @@ button{ font:inherit; }
 
 @media (max-width:1024px){
   .socials__grid{ grid-template-columns:1fr; }
-  .social-stats__grid{ grid-template-columns:repeat(2, 1fr); }
+  .social-stats__grid{ grid-template-columns:repeat(3, 1fr); }
   .social-cta__inner{ flex-direction:column; align-items:flex-start; }
   .nav.is-open .nav__btn{
     margin:12px 0 0; justify-content:center; padding:13px 20px;
@@ -1009,6 +1018,11 @@ button{ font:inherit; }
   .format-card:nth-child(4){ order:4; }
   .format-card:nth-child(5){ order:5; }
   .format-card:nth-child(6){ order:6; }
+  /* при нечётном числе форматов последняя карточка занимает столбец целиком,
+     иначе под ней остаётся пустая клетка */
+  .formats__grid > .format-card:last-child:nth-child(odd){
+    grid-row:span 2; aspect-ratio:auto;
+  }
   .format-card__body{ left:11px; right:46px; bottom:11px; }
   .format-card__go{ display:grid; }
 

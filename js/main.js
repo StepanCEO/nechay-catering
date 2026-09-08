@@ -86,7 +86,7 @@
   /* ---------- появление секций при скролле ---------- */
   var revealTargets = document.querySelectorAll(
     '.section-head, .feature, .format-card, .about__media, .about__text, ' +
-    '.menu-card, .menu__cta, .step, .pf, .review, .contacts__info, .form, ' +
+    '.menu-card, .menu__cta, .step, .pf, .clients__grid li, .contacts__info, .form, ' +
     '.social-card, .stat, .social-cta__inner'
   );
   Array.prototype.forEach.call(revealTargets, function (el) { el.classList.add('reveal'); });

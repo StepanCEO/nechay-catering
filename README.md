@@ -52,24 +52,26 @@ assets/img/         картинки (см. ниже)
 
 | Файл | Что на снимке | Лицензия | Источник |
 |---|---|---|---|
-| `format-1.jpg` | Фуршеты | CC0 | [ссылка](https://www.rawpixel.com/image/6066512/free-public-domain-cc0-photo) |
-| `format-2.jpg` | Банкеты | CC0 | [ссылка](https://www.rawpixel.com/image/5913869/image-background-cloud-public-domain) |
-| `format-3.jpg` | Доставка | CC0 | [ссылка](https://stocksnap.io/photo/picnic-food-ZMJIH1NTZ1) |
-| `format-4.jpg` | Десерты | CC0 | [ссылка](https://www.rawpixel.com/image/5968177/panna-cotta-dessert) |
-| `format-5.jpg` | Бизнес-мероприятия | CC0 | [ссылка](https://stocksnap.io/photo/waiter-drink-EWJPCRAR3S) |
-| `format-6.jpg` | Частные события | CC0 | [ссылка](https://www.rawpixel.com/image/5925661/photo-image-flowers-public-domain-celebration) |
+| `format-1.jpg` | Фуршет | CC0 | [ссылка](https://www.rawpixel.com/image/6066512/free-public-domain-cc0-photo) |
+| `format-2.jpg` | Кофе-брейк | CC0 | [ссылка](https://www.rawpixel.com/image/5974819/coffee-break-with-small-sweet-pastry) |
+| `format-3.jpg` | Клиентские дни | CC0 | [ссылка](https://stocksnap.io/photo/waiter-drink-EWJPCRAR3S) |
+| `format-4.jpg` | Фуршеты в горах | CC0 | [ссылка](https://stocksnap.io/photo/outdoor-picnic-WSRRONVX8J) |
+| `format-5.jpg` | Доставка гастробоксов | CC0 | [ссылка](https://stocksnap.io/photo/picnic-food-ZMJIH1NTZ1) |
 | `portfolio/01.jpg` | Тарталетки | CC0 | [ссылка](https://www.rawpixel.com/image/8734502/salmon-tartlets) |
 | `portfolio/02.jpg` | Фуршетный сет | CC0 | [ссылка](https://stocksnap.io/photo/appetizer-food-3DK61FKKYZ) |
 | `portfolio/03.jpg` | Гастробокс | CC0 | [ссылка](https://www.rawpixel.com/image/3282990/free-photo-image-food-dinner-antipasto) |
 | `portfolio/04.jpg` | Канапе-сет | CC0 | [ссылка](https://www.rawpixel.com/image/5959340/free-public-domain-cc0-photo) |
 | `portfolio/05.jpg` | Десертный стол | CC0 | [ссылка](https://commons.wikimedia.org/w/index.php?curid=130122199) |
-| `portfolio/06.jpg` | Кофе-брейк | CC0 | [ссылка](https://www.rawpixel.com/image/5974819/coffee-break-with-small-sweet-pastry) |
+| `portfolio/06.jpg` | Банкетный стол | CC0 | [ссылка](https://www.rawpixel.com/image/5913869/image-background-cloud-public-domain) |
 | `portfolio/07.jpg` | Закуски к игристому | CC0 | [ссылка](https://www.rawpixel.com/image/6041641/photo-image-public-domain-food-burger) |
 | `portfolio/08.jpg` | Выездное накрытие | PDM | [ссылка](https://www.flickr.com/photos/38144472@N04/14556840399) |
 
 Размеры, если будешь менять: плитки форматов — 800×633 (горизонтальные),
 портфолио — 900×900 квадратные, а `01` и `06` вертикальные 640×1318
 (в сетке они вытянуты на две строки).
+
+Форматов пять — по списку из «инфа сайт.docx». Если добавишь шестой,
+поправь число колонок у `.formats__grid` в `css/style.css`.
 
 ## Первый экран
 
@@ -88,15 +90,18 @@ assets/img/         картинки (см. ниже)
 
 ## Что нужно заменить в тексте
 
-Сейчас стоят условные контакты — их надо поменять на реальные:
+Тексты «О нас», форматы, подводка к меню, цифры и список клиентов взяты
+из «инфа сайт.docx» — это реальные данные.
 
-- отзывы в блоке «Отзывы» — сейчас это примеры
-- цифры в блоке «В цифрах» на странице соцсетей — тоже условные
+Осталось условным только одно: **отзывов нет**. Раздел с придуманными
+отзывами я убрал — публиковать выдуманные отзывы от несуществующих людей
+на живом сайте нельзя. На его месте теперь блок «Наши клиенты».
+Пришлёшь настоящие отзывы — верну раздел.
 
-Телефон, почта и WhatsApp уже настоящие: **+7 (962) 490-84-83**, **ekaterina-nechaeva@bk.ru**.
-Он стоит в шапке, в контактах и в подвале обеих страниц,
-а `wa.me/79624908483` — в зелёной кнопке, в блоке «Контакты»
-и в константе `WHATSAPP_NUMBER` в `js/main.js` (туда уходит заявка из формы).
+Телефон, почта и WhatsApp настоящие: **+7 (962) 490-84-83**,
+**ekaterina-nechaeva@bk.ru**.
+`wa.me/79624908483` стоит в зелёной кнопке, в блоке «Контакты» и в константе
+`WHATSAPP_NUMBER` в `js/main.js` (туда уходит заявка из формы).
 
 ## Кнопка WhatsApp
 
