@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=7">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -172,8 +172,11 @@
   <h1 class="visually-hidden">НЕЧАЙ — кейтеринг для особых событий</h1>
 
   <div class="hero__pic">
-    <img src="assets/img/hero.jpg"
-         alt="Кейтеринг «Нечай» — авторские гастрономические решения для праздников, встреч и бизнес-событий">
+    <picture>
+      <source srcset="assets/img/hero.avif" type="image/avif">
+      <img src="assets/img/hero.webp"
+           alt="Кейтеринг «Нечай» — авторские гастрономические решения для праздников, встреч и бизнес-событий">
+    </picture>
     <!-- кликабельная область поверх нарисованной кнопки «Выбрать меню» -->
     <a class="hero__hotspot" href="#menu" aria-label="Выбрать меню"></a>
   </div>
@@ -640,6 +643,7 @@
   <span>Заказать в WhatsApp</span>
 </a>
 
-<script src="js/main.js?v=6"></script>
+<script src="js/main.js?v=7"></script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112389037" style="position:absolute;left:-9999px" alt=""></div></noscript>
 </body>
 </html>

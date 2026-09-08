@@ -1,0 +1,4 @@
+# Админку не должно быть в поисковой выдаче
+<IfModule mod_headers.c>
+    Header always set X-Robots-Tag "noindex, nofollow"
+</IfModule>

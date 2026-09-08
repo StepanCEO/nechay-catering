@@ -1,0 +1,10 @@
+# Файлы с паролями наружу не отдаём ни при каких обстоятельствах
+<FilesMatch "^config.*\.php$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

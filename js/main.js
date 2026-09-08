@@ -9,7 +9,7 @@
      Впиши номер счётчика — включатся и статистика, и цели.
      Пока строка пустая, ничего не грузится и не отслеживается.
      ============================================================ */
-  var METRIKA_ID = '';
+  var METRIKA_ID = '112389037';
 
   function initMetrika() {
     if (!METRIKA_ID) return;
@@ -208,7 +208,7 @@
      с formspree.io (вида https://formspree.io/f/xxxxxxxx), и копия
      каждой заявки начнёт приходить на почту, даже если человек
      передумает отправлять сообщение в WhatsApp. */
-  var FORM_ENDPOINT = '';
+  var FORM_ENDPOINT = '/api/lead.php';
 
   var form = document.getElementById('orderForm');
   var status = document.getElementById('formStatus');
