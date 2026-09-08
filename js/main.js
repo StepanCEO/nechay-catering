@@ -4,6 +4,51 @@
 (function () {
   'use strict';
 
+  /* ============================================================
+     ЯНДЕКС.МЕТРИКА
+     Впиши номер счётчика — включатся и статистика, и цели.
+     Пока строка пустая, ничего не грузится и не отслеживается.
+     ============================================================ */
+  var METRIKA_ID = '';
+
+  function initMetrika() {
+    if (!METRIKA_ID) return;
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < e.scripts.length; j++) {
+        if (e.scripts[j].src === r) return;
+      }
+      k = e.createElement(t); a = e.getElementsByTagName(t)[0];
+      k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+    window.ym(METRIKA_ID, 'init', {
+      clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true
+    });
+  }
+
+  // единая точка: цель уходит, только если счётчик подключён
+  function goal(name) {
+    if (METRIKA_ID && window.ym) window.ym(METRIKA_ID, 'reachGoal', name);
+  }
+
+  initMetrika();
+
+  /* цели вешаем делегированно — ссылки есть на обеих страницах */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+
+    if (a.classList.contains('wa-fab'))          goal('whatsapp_fab');
+    else if (href.indexOf('wa.me') !== -1)       goal('whatsapp');
+    else if (href.indexOf('tel:') === 0)         goal('phone');
+    else if (href.indexOf('mailto:') === 0)      goal('email');
+    else if (href.indexOf('menusa.app') !== -1)  goal('menu_open');
+    else if (href.indexOf('instagram.com') !== -1 || href.indexOf('t.me') !== -1) goal('social');
+  }, true);
+
   /* ---------- год в подвале ---------- */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -217,6 +262,8 @@
 
     var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
     window.open(url, '_blank', 'noopener');
+
+    goal('form_submit');
 
     status.textContent = FORM_ENDPOINT
       ? 'Заявка отправлена. Открыли WhatsApp — можно сразу написать нам.'
