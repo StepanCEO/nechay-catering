@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=7">
+<link rel="stylesheet" href="css/style.css?v=11">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -168,38 +168,30 @@
 </header>
 
 <!-- ============ HERO ============ -->
+<!-- Собран из слоёв, а не одной картинкой: надписи и логотип остаются
+     чёткими на любом мониторе, фотографией служит только фон. -->
 <section class="hero" id="hero">
   <h1 class="visually-hidden">НЕЧАЙ — кейтеринг для особых событий</h1>
 
-  <div class="hero__pic">
-    <picture>
-      <source srcset="assets/img/hero.avif" type="image/avif">
-      <img src="assets/img/hero.webp"
-           alt="Кейтеринг «Нечай» — авторские гастрономические решения для праздников, встреч и бизнес-событий">
-    </picture>
-    <!-- кликабельная область поверх нарисованной кнопки «Выбрать меню» -->
-    <a class="hero__hotspot" href="#menu" aria-label="Выбрать меню"></a>
-  </div>
-
-  <!-- на телефоне баннер целиком нечитаем, поэтому та же композиция
-       собирается из слоёв: фон, шеф, живой текст -->
-  <div class="hero__mobile">
-    <div class="hero__mobile-bg" aria-hidden="true">
+  <div class="hero__live">
+    <div class="hero__live-bg" aria-hidden="true">
       <picture>
-        <source srcset="assets/img/hero-mobile.avif" type="image/avif">
-        <img src="assets/img/hero-mobile.webp" alt="">
+        <source media="(max-width:760px)" srcset="assets/img/hero-mobile.avif" type="image/avif">
+        <source media="(max-width:760px)" srcset="assets/img/hero-mobile.webp" type="image/webp">
+        <source srcset="assets/img/hero-bg.avif" type="image/avif">
+        <img src="assets/img/hero-bg.webp" alt="">
       </picture>
     </div>
 
     <p class="hero__script">С любовью<br>к людям<br>и вкусной еде<br><span class="hero__heart">♡</span></p>
 
-    <img class="hero__mobile-chef" src="assets/img/chef.png" alt="" aria-hidden="true">
+    <img class="hero__live-chef" src="assets/img/chef.png" alt="" aria-hidden="true">
 
-    <div class="hero__mobile-content">
-      <img class="hero__mobile-logo" src="assets/img/logo-light.png" alt="НЕЧАЙ">
-      <p class="hero__tagline">Кейтеринг для<br>особых событий</p>
-      <p class="hero__lead">Авторские гастрономические решения для ваших праздников, встреч и бизнес-событий</p>
-      <a href="#menu" class="btn btn--primary">Выбрать меню
+    <div class="hero__live-content">
+      <img class="hero__live-logo" src="assets/img/logo-light.png" alt="НЕЧАЙ">
+      <p class="hero__tagline">Кейтеринг для особых событий</p>
+      <p class="hero__lead">Авторские гастрономические решения<br> для ваших праздников, встреч и бизнес-событий</p>
+      <a href="#menu" class="btn btn--primary btn--lg">Выбрать меню
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
@@ -643,7 +635,7 @@
   <span>Заказать в WhatsApp</span>
 </a>
 
-<script src="js/main.js?v=7"></script>
+<script src="js/main.js?v=11"></script>
 <noscript><div><img src="https://mc.yandex.ru/watch/112389037" style="position:absolute;left:-9999px" alt=""></div></noscript>
 </body>
 </html>

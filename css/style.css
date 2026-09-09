@@ -162,7 +162,11 @@ button{ font:inherit; }
 .burger.is-open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
 
 /* ============================================================
-   HERO — готовый баннер картинкой
+   HERO — собран из слоёв
+   Готовый баннер картинкой пришлось разобрать: исходник был
+   1280×720, и на больших мониторах вшитые надписи расплывались.
+   Теперь фотографией остался только фон, а логотип и текст —
+   отдельные слои, они чёткие при любом разрешении.
    ============================================================ */
 .visually-hidden{
   position:absolute; width:1px; height:1px; margin:-1px; padding:0;
@@ -171,36 +175,58 @@ button{ font:inherit; }
 
 .hero{
   position:relative; margin-top:var(--header-h);
-  background:var(--brown-dark);
+  background:var(--brown-dark); overflow:hidden;
 }
-.hero__pic{ position:relative; line-height:0; }
-.hero__pic picture{ display:block; }
-.hero__pic img{ width:100%; height:auto; display:block; }
-
-/* прозрачная кнопка ровно поверх нарисованной — координаты в процентах,
-   поэтому она едет вместе с картинкой на любом размере экрана */
-.hero__hotspot{
-  position:absolute;
-  left:56.4%; top:62.2%; width:21%; height:7.7%;
-  border-radius:999px;
-  box-shadow:0 0 0 0 rgba(255,255,255,0);
-  transition:box-shadow .3s var(--ease), transform .3s var(--ease);
-}
-.hero__hotspot:hover{
-  transform:translateY(-1px);
-  box-shadow:0 0 0 4px rgba(255,214,170,.35);
-}
-.hero__hotspot:focus-visible{
-  outline:none; box-shadow:0 0 0 4px rgba(255,214,170,.75);
+.hero__live{
+  position:relative;
+  min-height:clamp(430px, 48vw, 700px);
+  display:flex; align-items:stretch;
 }
 
-/* текстовый дубль — только на телефоне */
-.hero__mobile{ display:none; }
+.hero__live-bg{ position:absolute; inset:0; z-index:0; overflow:hidden; }
+.hero__live-bg picture{ display:block; width:100%; height:100%; }
+.hero__live-bg img{ width:100%; height:100%; object-fit:cover; object-position:center; }
+.hero__live-bg::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(90deg, rgba(48,22,10,.78) 0%, rgba(48,22,10,.42) 44%, rgba(48,22,10,.3) 100%),
+    linear-gradient(180deg, rgba(48,22,10,.28) 0%, rgba(48,22,10,0) 38%, rgba(48,22,10,.4) 100%);
+}
+
+.hero__script{
+  position:absolute; z-index:2; left:2.5%; top:17%;
+  margin:0; transform:rotate(-8deg);
+  font-family:var(--font-script);
+  font-size:clamp(14px, 1.85vw, 34px); line-height:1.45;
+  color:#fff; text-shadow:0 3px 16px rgba(40,18,8,.55);
+}
+.hero__heart{ display:inline-block; margin-left:1.8em; font-size:.9em; }
+
+.hero__live-chef{
+  position:absolute; z-index:1; left:9.5%; top:4%;
+  height:152%; width:auto; max-width:none;
+  filter:drop-shadow(0 22px 44px rgba(40,18,8,.5));
+}
+
+.hero__live-content{
+  position:relative; z-index:2;
+  flex:1; margin-left:36%; padding:2% 4% 2% 0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center;
+}
+.hero__live-content > *{ max-width:100%; }
+.hero__live-logo{
+  width:clamp(230px, 24vw, 470px); height:auto; margin-bottom:16px;
+  filter:drop-shadow(0 6px 22px rgba(40,18,8,.45));
+}
 .hero__tagline{
-  font-size:12px; letter-spacing:.28em; text-transform:uppercase;
-  color:#F0DCC8; margin-bottom:14px; padding-left:.28em;
+  font-size:clamp(11px, .95vw, 18px); letter-spacing:.44em; text-transform:uppercase;
+  color:#F0DCC8; margin-bottom:22px; padding-left:.44em;
 }
-.hero__lead{ color:#F2E3D5; font-size:15px; line-height:1.6; margin-bottom:24px; }
+.hero__lead{
+  color:#F2E3D5; font-size:clamp(13px, 1.18vw, 20px);
+  line-height:1.6; margin-bottom:28px;
+}
 
 /* ============================================================
    FEATURES
@@ -575,9 +601,6 @@ button{ font:inherit; }
 
 @media (max-width:760px){
   .container{ width:calc(100% - 32px); }
-  /* первый экран собирается заново — см. блок «МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН» */
-  .hero__pic{ display:none; }
-  .hero__mobile{ display:block; }
   /* принудительные переносы верстались под широкий экран */
   .page-hero__lead br,
   .section-sub br{ display:none; }
@@ -912,74 +935,38 @@ button{ font:inherit; }
 }
 
 /* ============================================================
-   МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН
-   Готовый баннер на узком экране нечитаем, поэтому та же
-   композиция собирается из слоёв: тёплый свет, шеф, живой текст.
+   ПЕРВЫЙ ЭКРАН НА ТЕЛЕФОНЕ
+   Те же слои, только теснее: шеф уже, текст мельче.
    ============================================================ */
-.hero__mobile{ display:none; }
-
 @media (max-width:760px){
-  .hero{ overflow:hidden; }
+  .hero__live{ min-height:365px; }
 
-  .hero__mobile{
-    position:relative; min-height:365px;
-    display:flex; align-items:stretch;
-  }
-
-  /* фон — фрагмент того же снимка, что на десктопе:
-     склеены полосы баннера без вшитых надписей */
-  .hero__mobile-bg{ position:absolute; inset:0; z-index:0; overflow:hidden; }
-  .hero__mobile-bg picture{ display:block; width:100%; height:100%; }
-  .hero__mobile-bg img{
-    width:100%; height:100%; object-fit:cover; object-position:72% center;
-  }
-  .hero__mobile-bg::after{
-    content:""; position:absolute; inset:0;
+  .hero__live-bg::after{
     background:
       linear-gradient(90deg, rgba(48,22,10,.82) 0%, rgba(48,22,10,.5) 42%, rgba(48,22,10,.34) 100%),
       linear-gradient(180deg, rgba(48,22,10,.3) 0%, rgba(48,22,10,0) 40%, rgba(48,22,10,.42) 100%);
   }
 
   .hero__script{
-    position:absolute; z-index:2; left:8px; top:10px;
-    margin:0; transform:rotate(-8deg);
-    font-family:var(--font-script); font-size:12.5px; line-height:1.35;
-    color:#fff; text-shadow:0 3px 14px rgba(40,18,8,.6);
+    left:8px; top:10px; font-size:12.5px; line-height:1.35;
   }
-  .hero__heart{ display:inline-block; margin-left:1.2em; font-size:.9em; }
+  .hero__heart{ margin-left:1.2em; }
 
-  .hero__mobile-chef{
-    position:absolute; z-index:1; left:1%; top:11%;
-    height:128%; width:auto; max-width:none;
-    filter:drop-shadow(0 18px 34px rgba(40,18,8,.5));
-  }
+  .hero__live-chef{ left:1%; top:11%; height:128%; }
 
-  .hero__mobile-content{
-    position:relative; z-index:2;
+  .hero__live-content{
     margin-left:44%; padding:24px 14px 26px 4px;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center;
   }
-  .hero__mobile-logo{
-    width:min(190px, 100%); height:auto; margin-bottom:10px;
-    filter:drop-shadow(0 5px 16px rgba(40,18,8,.5));
-  }
-  .hero__mobile-content .hero__tagline{
-    font-size:11px; letter-spacing:.2em; line-height:1.6;
-    margin-bottom:12px; padding-left:.2em;
-  }
-  .hero__mobile-content .hero__lead{
-    font-size:12.5px; line-height:1.5; margin-bottom:18px;
-  }
-  .hero__mobile-content .btn{
-    padding:13px 20px; font-size:14px; gap:8px;
-  }
+  .hero__live-logo{ width:min(190px, 100%); margin-bottom:10px; }
+  .hero__tagline{ letter-spacing:.2em; line-height:1.6; margin-bottom:12px; }
+  .hero__lead{ margin-bottom:18px; }
+  .hero__lead br{ display:none; }
+  .hero__live-content .btn{ padding:13px 20px; font-size:14px; gap:8px; }
 }
 
 @media (max-width:400px){
-  .hero__mobile-content{ margin-left:41%; }
-  .hero__mobile-logo{ width:min(160px, 100%); }
-  .hero__mobile-content .hero__lead{ font-size:11.5px; }
+  .hero__live-content{ margin-left:41%; }
+  .hero__live-logo{ width:min(160px, 100%); }
 }
 
 /* ============================================================
