@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=11">
+<link rel="stylesheet" href="css/style.css?v=18">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -168,30 +168,43 @@
 </header>
 
 <!-- ============ HERO ============ -->
-<!-- Собран из слоёв, а не одной картинкой: надписи и логотип остаются
-     чёткими на любом мониторе, фотографией служит только фон. -->
+<!-- Собран из отдельных слоёв: фон, фигура и текстовый блок приходят
+     готовыми картинками, кнопка — настоящая. -->
 <section class="hero" id="hero">
   <h1 class="visually-hidden">НЕЧАЙ — кейтеринг для особых событий</h1>
 
-  <div class="hero__live">
-    <div class="hero__live-bg" aria-hidden="true">
+  <div class="hero__scene" aria-hidden="true">
+    <picture>
+        <source srcset="assets/img/hero-scene.avif" type="image/avif">
+        <img src="assets/img/hero-scene.webp" alt="">
+      </picture>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="hero__figure">
       <picture>
-        <source media="(max-width:760px)" srcset="assets/img/hero-mobile.avif" type="image/avif">
-        <source media="(max-width:760px)" srcset="assets/img/hero-mobile.webp" type="image/webp">
-        <source srcset="assets/img/hero-bg.avif" type="image/avif">
-        <img src="assets/img/hero-bg.webp" alt="">
+        <source srcset="assets/img/hero-figure.avif" type="image/avif">
+        <img src="assets/img/hero-figure.webp" alt="Екатерина Нечаева, основатель кейтеринга «Нечай»">
       </picture>
     </div>
 
-    <p class="hero__script">С любовью<br>к людям<br>и вкусной еде<br><span class="hero__heart">♡</span></p>
+    <div class="hero__content">
+      <div class="hero__title">
+        <picture>
+        <source srcset="assets/img/hero-title.avif" type="image/avif">
+        <img src="assets/img/hero-title.webp" alt="НЕЧАЙ — кейтеринг для особых событий">
+      </picture>
+      </div>
 
-    <img class="hero__live-chef" src="assets/img/chef.png" alt="" aria-hidden="true">
+      <div class="hero__lead-img">
+        <picture>
+        <source srcset="assets/img/hero-lead.avif" type="image/avif">
+        <img src="assets/img/hero-lead.webp" alt="Авторские гастрономические решения для ваших праздников, встреч и бизнес-событий">
+      </picture>
+      </div>
+      <p class="hero__lead-text">Авторские гастрономические решения для ваших праздников, встреч и бизнес-событий</p>
 
-    <div class="hero__live-content">
-      <img class="hero__live-logo" src="assets/img/logo-light.png" alt="НЕЧАЙ">
-      <p class="hero__tagline">Кейтеринг для особых событий</p>
-      <p class="hero__lead">Авторские гастрономические решения<br> для ваших праздников, встреч и бизнес-событий</p>
-      <a href="#menu" class="btn btn--primary btn--lg">Выбрать меню
+      <a href="#menu" class="btn btn--primary btn--lg hero__cta">Выбрать меню
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
@@ -635,7 +648,7 @@
   <span>Заказать в WhatsApp</span>
 </a>
 
-<script src="js/main.js?v=11"></script>
+<script src="js/main.js?v=18"></script>
 <noscript><div><img src="https://mc.yandex.ru/watch/112389037" style="position:absolute;left:-9999px" alt=""></div></noscript>
 </body>
 </html>
