@@ -163,9 +163,8 @@ button{ font:inherit; }
 
 /* ============================================================
    HERO
-   Собран из слоёв: фон, фигура и текстовый блок — отдельные
-   картинки, кнопка настоящая. Так надписи не растягиваются
-   вместе с фоном и остаются чёткими на любом мониторе.
+   Фон — фотография, логотип — картинка, надписи — живой текст.
+   Ничего не растягивается: логотип рисуется с уменьшением.
    ============================================================ */
 .visually-hidden{
   position:absolute; width:1px; height:1px; margin:-1px; padding:0;
@@ -176,42 +175,39 @@ button{ font:inherit; }
   position:relative; margin-top:var(--header-h);
   background:var(--cream-2); overflow:hidden;
 }
-
 .hero__scene{ position:absolute; inset:0; z-index:0; }
 .hero__scene picture{ display:block; width:100%; height:100%; }
 .hero__scene img{ width:100%; height:100%; object-fit:cover; object-position:center; }
+/* лёгкая подсветка по центру, чтобы тёмный текст читался на любом кадре */
+.hero__scene::after{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(58% 62% at 50% 52%, rgba(255,250,244,.62), rgba(255,250,244,0) 72%);
+}
 
 .hero__inner{
   position:relative; z-index:1;
-  height:clamp(450px, 37vw, 720px);
-  display:flex; align-items:flex-end; gap:2%;
+  min-height:clamp(400px, 33vw, 620px);
+  display:flex; align-items:center; justify-content:center;
 }
-
-/* фигура прижата к низу и слегка выходит за край — так она «стоит» в кадре */
-.hero__figure{
-  flex:0 0 auto; align-self:stretch;
-  display:flex; align-items:flex-end;
-}
-.hero__figure picture{ display:block; height:100%; }
-.hero__figure img{
-  height:100%; width:auto; max-width:none;
-  object-fit:contain; object-position:bottom;
-  display:block;
-}
-
 .hero__content{
-  flex:1; align-self:center;
   display:flex; flex-direction:column; align-items:center;
-  padding-bottom:2%;
+  text-align:center; padding:6% 0;
 }
 .hero__content > *{ max-width:100%; }
 
-.hero__title img{ width:clamp(280px, 34vw, 660px); height:auto; }
-.hero__lead-img{ margin-top:2.2%; }
-.hero__lead-img img{ width:clamp(240px, 28vw, 552px); height:auto; }
-.hero__lead-text{ display:none; }
+.hero__logo{ display:block; }
+.hero__logo img{ width:clamp(240px, 32vw, 560px); height:auto; display:block; }
 
-.hero__cta{ margin-top:3.4%; }
+.hero__tagline{
+  margin-top:4%;
+  font-size:clamp(12px, 1.15vw, 21px); letter-spacing:.2em; text-transform:uppercase;
+  color:var(--brown-dark); padding-left:.2em;
+}
+.hero__lead{
+  margin-top:2.4%;
+  font-size:clamp(13px, 1.15vw, 20px); line-height:1.6; color:var(--ink);
+}
+.hero__cta{ margin-top:3.6%; }
 
 /* ============================================================
    FEATURES
@@ -273,6 +269,7 @@ button{ font:inherit; }
   display:grid; grid-template-columns:0.95fr 1fr; gap:60px; align-items:center;
 }
 .about__media{ position:relative; }
+.about__media picture{ display:block; }
 .about__media img{
   width:100%; aspect-ratio:9/10; object-fit:cover;
   border-radius:var(--radius); box-shadow:var(--shadow-lg);
@@ -424,7 +421,7 @@ button{ font:inherit; }
 }
 .clients__grid li{
   display:grid; place-items:center; text-align:center;
-  min-height:118px; padding:20px 24px;
+  min-height:132px; padding:22px 24px;
   background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
   transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
 }
@@ -439,7 +436,7 @@ button{ font:inherit; }
 /* знаки разной формы: широкие словесные и компактные марки нужно
    уравнять по оптическому размеру, иначе ряд скачет */
 .clients__logo--wide{ max-height:30px; }
-.clients__logo--mark{ max-width:96px; max-height:68px; }
+.clients__logo--mark{ max-width:104px; max-height:82px; }
 .clients__note{
   margin-top:24px; text-align:center; color:var(--ink-soft); font-size:15px;
 }
@@ -921,34 +918,15 @@ button{ font:inherit; }
 
 /* ============================================================
    ПЕРВЫЙ ЭКРАН НА ТЕЛЕФОНЕ
-   Вырезка заметно шире прежней, поэтому она заходит за левый край:
-   так остаётся место тексту. Подводка тут настоящим текстом —
-   картинкой на такой ширине её было бы не прочитать.
    ============================================================ */
 @media (max-width:760px){
-  .hero__inner{ height:clamp(340px, 95vw, 430px); gap:0; }
-
-  .hero__figure{ margin-left:-14%; }
-  .hero__figure img{ height:92%; }
-
-  .hero__content{
-    align-self:center; padding-bottom:6px;
-  }
-  .hero__title img{ width:min(186px, 100%); }
-
-  .hero__lead-img{ display:none; }
-  .hero__lead-text{
-    display:block; margin-top:9px; text-align:center;
-    font-size:11.5px; line-height:1.45; color:var(--ink);
-    text-shadow:0 1px 6px rgba(255,250,244,.85);
-  }
-  .hero__cta{ margin-top:13px; padding:12px 18px; font-size:13.5px; gap:7px; }
-}
-
-@media (max-width:400px){
-  .hero__figure{ margin-left:-18%; }
-  .hero__title img{ width:min(160px, 100%); }
-  .hero__lead-text{ font-size:11px; }
+  .hero__inner{ min-height:clamp(300px, 78vw, 380px); }
+  .hero__content{ padding:28px 0; }
+  .hero__logo img{ width:min(240px, 78vw); }
+  .hero__tagline{ margin-top:16px; font-size:11px; letter-spacing:.16em; line-height:1.6; }
+  .hero__lead{ margin-top:10px; font-size:13px; }
+  .hero__lead br{ display:none; }
+  .hero__cta{ margin-top:18px; padding:13px 22px; font-size:14px; }
 }
 
 /* ============================================================
@@ -1118,80 +1096,6 @@ button{ font:inherit; }
 .doc a{ color:var(--orange); text-decoration:underline; text-underline-offset:2px; }
 .doc__back{ margin-top:38px; padding-top:26px; border-top:1px solid var(--line); }
 .doc__back a{ text-decoration:none; }
-
-/* ============================================================
-   КАЛЬКУЛЯТОР СМЕТЫ
-   ============================================================ */
-.calc{ padding:clamp(54px, 5vw, 84px) 0; background:var(--cream-2); }
-.calc__box{
-  display:grid; grid-template-columns:1.15fr .85fr; gap:0;
-  background:var(--white); border:1px solid var(--line);
-  border-radius:var(--radius); overflow:hidden;
-}
-.calc__controls{ padding:clamp(24px, 2.6vw, 40px); display:grid; gap:28px; align-content:start; }
-.calc__field{ display:grid; gap:12px; }
-.calc__label{
-  font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
-  color:var(--ink-soft); font-weight:600;
-}
-.calc__label b{ color:var(--brown-dark); font-size:15px; letter-spacing:0; }
-
-.calc__formats{ display:flex; flex-wrap:wrap; gap:8px; }
-.calc__formats button{
-  padding:10px 18px; border:1px solid var(--line); border-radius:999px;
-  background:transparent; color:var(--ink-soft);
-  font:inherit; font-size:14px; font-weight:600; cursor:pointer;
-  transition:background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease);
-}
-.calc__formats button:hover{ border-color:var(--orange-soft); color:var(--brown-dark); }
-.calc__formats button[aria-pressed="true"]{
-  background:var(--orange); border-color:var(--orange); color:#fff;
-}
-
-.calc__field input[type="range"]{
-  width:100%; accent-color:var(--orange); cursor:pointer;
-}
-.calc__scale{
-  display:flex; justify-content:space-between;
-  font-size:12px; color:var(--ink-soft); margin-top:-6px;
-}
-
-.calc__extra{
-  display:flex; align-items:center; gap:10px;
-  font-size:14.5px; color:var(--ink); cursor:pointer;
-}
-.calc__extra input{ width:17px; height:17px; accent-color:var(--orange); cursor:pointer; }
-.calc__extra i{ font-style:normal; color:var(--ink-soft); font-size:13.5px; }
-
-.calc__result{
-  padding:clamp(24px, 2.6vw, 40px);
-  background:var(--brown-dark); color:#F3E3D3;
-  display:flex; flex-direction:column; justify-content:center;
-}
-.calc__from{
-  font-size:11.5px; letter-spacing:.18em; text-transform:uppercase;
-  color:rgba(243,227,211,.6); font-weight:600; margin-bottom:10px;
-}
-.calc__total{
-  font-family:var(--font-display); font-weight:600;
-  font-size:clamp(38px, 3.6vw, 58px); line-height:1; color:#fff;
-  font-variant-numeric:lining-nums tabular-nums;
-}
-.calc__per{
-  margin:12px 0 26px; font-size:14px; color:rgba(243,227,211,.75);
-  font-variant-numeric:lining-nums tabular-nums;
-}
-.calc__note{
-  margin-top:14px; font-size:12px; line-height:1.5;
-  color:rgba(243,227,211,.55); text-align:center;
-}
-
-@media (max-width:860px){
-  .calc__box{ grid-template-columns:1fr; }
-}
-@media (max-width:760px){
-  .calc__formats button{ padding:9px 14px; font-size:13px; }
-}
 
 /* ============================================================
    ЧАСТЫЕ ВОПРОСЫ

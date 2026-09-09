@@ -2,6 +2,42 @@
 /** Админка: вход, список заявок, статусы, сводка. */
 
 declare(strict_types=1);
+
+/* Если что-то падает, хостинг по умолчанию отдаёт пустую страницу —
+   браузер пишет «сайт ничего не отправил в ответ». Ловим и показываем
+   понятный текст: без него причину не найти. */
+set_error_handler(function ($no, $str, $file, $line) {
+    throw new ErrorException($str, 0, $no, $file, $line);
+});
+set_exception_handler(function (Throwable $e) {
+    error_log('admin: ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());
+    if (!headers_sent()) {
+        http_response_code(500);
+        header('Content-Type: text/html; charset=utf-8');
+    }
+    $msg = $e->getMessage();
+    $hint = '';
+    if (stripos($msg, 'unknown database') !== false) {
+        $hint = 'Не найдена база с таким именем — проверь <code>db.name</code> в api/config.php. '
+              . 'У Timeweb имя обычно с префиксом логина, вроде <code>cm483206_что-то</code>.';
+    } elseif (stripos($msg, 'access denied') !== false) {
+        $hint = 'База отказала в доступе — проверь <code>db.user</code> и <code>db.pass</code> в api/config.php.';
+    } elseif (stripos($msg, 'connection refused') !== false || stripos($msg, "can't connect") !== false) {
+        $hint = 'Сервер базы не отвечает — проверь <code>db.host</code>, обычно это <code>localhost</code>.';
+    }
+    echo '<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8">'
+       . '<meta name="viewport" content="width=device-width, initial-scale=1">'
+       . '<title>Ошибка</title><link rel="stylesheet" href="style.css"></head>'
+       . '<body class="login-page"><div class="card login">'
+       . '<h1>Админка не открылась</h1>'
+       . ($hint ? '<p>' . $hint . '</p>' : '')
+       . '<p class="err">' . htmlspecialchars($msg, ENT_QUOTES, 'UTF-8') . '</p>'
+       . '<p style="font-size:12.5px;color:var(--soft)">'
+       . htmlspecialchars(basename($e->getFile()), ENT_QUOTES, 'UTF-8') . ', строка ' . (int)$e->getLine()
+       . '</p></div></body></html>';
+    exit;
+});
+
 require __DIR__ . '/../api/db.php';
 
 session_start();
