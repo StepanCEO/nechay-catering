@@ -232,6 +232,15 @@
       return;
     }
 
+    // без согласия заявку не отправляем: в ней персональные данные
+    var agree = form.querySelector('#formAgree');
+    if (agree && !agree.checked) {
+      agree.closest('.form__agree').classList.add('is-error');
+      status.textContent = 'Отметьте согласие на обработку персональных данных.';
+      return;
+    }
+    if (agree) agree.closest('.form__agree').classList.remove('is-error');
+
     var lines = [
       'Заявка с сайта «Нечай»',
       'Имя: ' + name,
@@ -439,5 +448,87 @@
     });
 
     renderPf();
+  }
+
+  /* ---------- калькулятор сметы ----------
+     Средняя цена позиции выведена из реального меню на Menusa:
+     тарталетки 4000/36 шт = 111 ₽, «Царские» 5500/36 = 153 ₽,
+     жульены 3200/16 = 200 ₽, тирамису 4000/24 = 167 ₽,
+     штучные канапе 120–160 ₽. Среднее по ним — около 150 ₽.
+
+     Число позиций на гостя — отраслевая норма, задано в data-pieces
+     у кнопок формата в разметке. Обе цифры править здесь и там. */
+  var PIECE_PRICE = 150;
+
+  var calcBox = document.getElementById('calcFormats');
+  if (calcBox) {
+    var guests   = document.getElementById('calcGuests');
+    var outTotal = document.getElementById('calcTotal');
+    var outPer   = document.getElementById('calcPer');
+    var outPcs   = document.getElementById('calcPieces');
+    var outGuest = document.getElementById('calcGuestsOut');
+    var goBtn    = document.getElementById('calcGo');
+    var extras   = document.querySelectorAll('.calc__extra input');
+
+    function money(n) {
+      return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0');
+    }
+
+    function activeFormat() {
+      return calcBox.querySelector('[aria-pressed="true"]') || calcBox.firstElementChild;
+    }
+
+    function recalc() {
+      var btn    = activeFormat();
+      var pieces = parseInt(btn.dataset.pieces, 10) || 8;
+      var n      = parseInt(guests.value, 10) || 0;
+
+      var extra = 0;
+      Array.prototype.forEach.call(extras, function (c) {
+        if (c.checked) extra += parseInt(c.dataset.extra, 10) || 0;
+      });
+
+      var food  = pieces * PIECE_PRICE * n;
+      var total = food + extra;
+
+      outGuest.textContent = n;
+      outPcs.textContent   = pieces;
+      outTotal.textContent = money(total);
+      outPer.textContent   = money(n ? total / n : 0);
+
+      // подставляем расчёт в форму заявки
+      goBtn.dataset.format = btn.textContent.trim();
+      goBtn.dataset.guests = n;
+    }
+
+    calcBox.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-format]');
+      if (!b) return;
+      Array.prototype.forEach.call(calcBox.querySelectorAll('button'), function (x) {
+        x.setAttribute('aria-pressed', String(x === b));
+      });
+      recalc();
+    });
+
+    guests.addEventListener('input', recalc);
+    Array.prototype.forEach.call(extras, function (c) {
+      c.addEventListener('change', recalc);
+    });
+
+    // переносим выбранное в форму, чтобы человек не вводил заново
+    goBtn.addEventListener('click', function () {
+      var form = document.getElementById('orderForm');
+      if (!form) return;
+      var sel = form.format, want = goBtn.dataset.format;
+      if (sel && want) {
+        Array.prototype.forEach.call(sel.options, function (o) {
+          if (o.text.toLowerCase().indexOf(want.toLowerCase()) === 0) sel.value = o.value;
+        });
+      }
+      if (form.guests && goBtn.dataset.guests) form.guests.value = goBtn.dataset.guests;
+      goal('calc_to_form');
+    });
+
+    recalc();
   }
 })();

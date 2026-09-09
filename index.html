@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=19">
+<link rel="stylesheet" href="css/style.css?v=22">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -131,6 +131,70 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Куда вы выезжаете?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Работаем по всему Ставропольскому краю с выездом по СКФО. Собственный цех находится в Минераловодском районе. Отдельный формат — фуршеты в горах и на сложных локациях, где нет кухни и подъезда: такие площадки для нас привычны."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Сколько гостей можете обслужить?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "От камерной встречи до фуршета на 300 гостей. За несколько сезонов провели больше 120 мероприятий — от кофе-брейков и завтраков до масштабных корпоративов."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что входит в стоимость, а что оплачивается отдельно?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "В стоимость входит еда по согласованному меню. Накрытие, посуда, мебель и техника считаются отдельно: фуршетное накрытие — 10 000 ₽, кофемашина — 5 000 ₽, термопод — 2 000 ₽, фуршетный или барный стол — 1 000 ₽, кресло — 500 ₽, чайная пара — 60 ₽. Берёте только то, чего нет на площадке."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Работаете ли с компаниями по договору?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да. Среди заказчиков РЖД, Сбербанк, МСП Банк, Samsung, «Милл Фауз» и «Новотерская целебная» — работаем и на государственных, и на корпоративных площадках."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли собрать меню под себя?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Каждое меню собирается индивидуально под повод, число гостей и площадку. Полный каталог с составом и ценами открыт на Menusa — оттуда можно выбрать готовые сеты или взять их за основу."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Есть ли что-то для гостей с ограничениями?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да. В меню есть халяльный гастробокс «Кавказ», а состав любого сета мы меняем под ваш формат. Про аллергии и вегетарианцев напишите в поле «Комментарий» в заявке — учтём при сборке меню."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Когда с вами можно связаться?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ежедневно с 8:00 до 21:00 — по телефону, в WhatsApp или в Telegram. Заявку с сайта видим сразу, отвечаем в течение рабочего дня."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -147,6 +211,7 @@
       <a href="#menu">Меню</a>
       <a href="#portfolio">Портфолио</a>
       <a href="#clients">Клиенты</a>
+      <a href="#faq">Вопросы</a>
       <a href="#contacts">Контакты</a>
       <a href="social.html" class="nav__btn">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
@@ -423,6 +488,58 @@
   </div>
 </section>
 
+<!-- ============ CALC ============ -->
+<section class="calc" id="calc">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Прикинуть бюджет</p>
+      <h2 class="section-title">Сколько это будет стоить</h2>
+      <p class="section-sub">Выберите формат и число гостей — покажем порядок суммы. Это ориентир: точную смету соберём после разговора, под ваше меню и площадку.</p>
+    </div>
+
+    <div class="calc__box">
+      <div class="calc__controls">
+        <div class="calc__field">
+          <span class="calc__label">Формат</span>
+          <div class="calc__formats" id="calcFormats" role="group" aria-label="Формат мероприятия">
+            <button type="button" data-format="coffee" data-pieces="4"  aria-pressed="false">Кофе-брейк</button>
+            <button type="button" data-format="furshet" data-pieces="8" aria-pressed="true">Фуршет</button>
+            <button type="button" data-format="banket" data-pieces="12" aria-pressed="false">Банкет</button>
+            <button type="button" data-format="boxes" data-pieces="10"  aria-pressed="false">Гастробоксы</button>
+          </div>
+        </div>
+
+        <div class="calc__field">
+          <span class="calc__label">Гостей: <b id="calcGuestsOut">40</b></span>
+          <input type="range" id="calcGuests" min="10" max="300" step="5" value="40"
+                 aria-label="Количество гостей">
+          <div class="calc__scale"><span>10</span><span>300</span></div>
+        </div>
+
+        <div class="calc__field">
+          <span class="calc__label">Дополнительно</span>
+          <label class="calc__extra">
+            <input type="checkbox" data-extra="10000" checked>
+            <span>Фуршетное накрытие <i>+10 000 ₽</i></span>
+          </label>
+          <label class="calc__extra">
+            <input type="checkbox" data-extra="5000">
+            <span>Кофемашина <i>+5 000 ₽</i></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="calc__result">
+        <p class="calc__from">Ориентировочно</p>
+        <p class="calc__total"><span id="calcTotal">0</span> ₽</p>
+        <p class="calc__per"><span id="calcPer">0</span> ₽ на гостя · <span id="calcPieces">8</span> закусок на каждого</p>
+        <a href="#contacts" class="btn btn--primary btn--full" id="calcGo">Отправить заявку с этим расчётом</a>
+        <p class="calc__note">Расчёт предварительный. Он не учитывает доставку, персонал и сложность площадки.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ STEPS ============ -->
 <section class="steps">
   <div class="container">
@@ -512,6 +629,47 @@
   </div>
 </section>
 
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Частые вопросы</p>
+      <h2 class="section-title">Что обычно спрашивают</h2>
+    </div>
+
+    <div class="faq__list">
+      <details class="faq__item" open>
+        <summary>Куда вы выезжаете?</summary>
+        <div class="faq__answer"><p>Работаем по всему Ставропольскому краю с выездом по СКФО. Собственный цех находится в Минераловодском районе. Отдельный формат — фуршеты в горах и на сложных локациях, где нет кухни и подъезда: такие площадки для нас привычны.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary>Сколько гостей можете обслужить?</summary>
+        <div class="faq__answer"><p>От камерной встречи до фуршета на 300 гостей. За несколько сезонов провели больше 120 мероприятий — от кофе-брейков и завтраков до масштабных корпоративов.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary>Что входит в стоимость, а что оплачивается отдельно?</summary>
+        <div class="faq__answer"><p>В стоимость входит еда по согласованному меню. Накрытие, посуда, мебель и техника считаются отдельно: фуршетное накрытие — 10 000 ₽, кофемашина — 5 000 ₽, термопод — 2 000 ₽, фуршетный или барный стол — 1 000 ₽, кресло — 500 ₽, чайная пара — 60 ₽. Берёте только то, чего нет на площадке.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary>Работаете ли с компаниями по договору?</summary>
+        <div class="faq__answer"><p>Да. Среди заказчиков РЖД, Сбербанк, МСП Банк, Samsung, «Милл Фауз» и «Новотерская целебная» — работаем и на государственных, и на корпоративных площадках.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary>Можно ли собрать меню под себя?</summary>
+        <div class="faq__answer"><p>Каждое меню собирается индивидуально под повод, число гостей и площадку. Полный каталог с составом и ценами открыт на Menusa — оттуда можно выбрать готовые сеты или взять их за основу.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary>Есть ли что-то для гостей с ограничениями?</summary>
+        <div class="faq__answer"><p>Да. В меню есть халяльный гастробокс «Кавказ», а состав любого сета мы меняем под ваш формат. Про аллергии и вегетарианцев напишите в поле «Комментарий» в заявке — учтём при сборке меню.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary>Когда с вами можно связаться?</summary>
+        <div class="faq__answer"><p>Ежедневно с 8:00 до 21:00 — по телефону, в WhatsApp или в Telegram. Заявку с сайта видим сразу, отвечаем в течение рабочего дня.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CONTACTS ============ -->
 <section class="contacts" id="contacts">
   <div class="container contacts__inner">
@@ -593,8 +751,14 @@
         <textarea name="comment" rows="3" placeholder="Площадка, пожелания по меню, аллергии…"></textarea>
       </label>
 
+      <label class="form__agree">
+        <input type="checkbox" name="agree" id="formAgree" required>
+        <span>Согласен на обработку персональных данных и с
+          <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>
+        </span>
+      </label>
+
       <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
-      <p class="form__note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
       <p class="form__status" id="formStatus" role="status"></p>
     </form>
   </div>
@@ -616,6 +780,7 @@
       <a href="#menu">Меню</a>
       <a href="#portfolio">Портфолио</a>
       <a href="#clients">Клиенты</a>
+      <a href="#faq">Вопросы</a>
       <a href="#contacts">Контакты</a>
       <a href="social.html">Соцсети</a>
     </nav>
@@ -628,7 +793,7 @@
   </div>
   <div class="container footer__bottom">
     <span>© <span id="year">2026</span> Кейтеринг «Нечай»</span>
-    <span>Ежедневно 8:00 — 21:00</span>
+    <span class="footer__legal">Ежедневно 8:00 — 21:00 <a href="privacy.html">Политика конфиденциальности</a></span>
   </div>
 </footer>
 
@@ -648,7 +813,7 @@
   <span>Заказать в WhatsApp</span>
 </a>
 
-<script src="js/main.js?v=19"></script>
+<script src="js/main.js?v=22"></script>
 <noscript><div><img src="https://mc.yandex.ru/watch/112389037" style="position:absolute;left:-9999px" alt=""></div></noscript>
 </body>
 </html>
