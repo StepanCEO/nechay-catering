@@ -120,6 +120,56 @@ function row(string $label, string $value, ?bool $ok = null): void
     <?php endif; ?>
   </section>
 
+  <section class="card block">
+    <h2>Тот же запрос, что делает «Аналитика»</h2>
+    <?php
+      /* Выше проверяется простой запрос. Здесь повторяется настоящий —
+         с тем же периодом и теми же метриками, — потому что «код 200»
+         ещё не значит, что ответ разобрался. */
+      $from = date('Y-m-d', strtotime('-29 days'));
+      $to   = date('Y-m-d');
+      $err  = null;
+      $totals = metrika_ready($m) ? metrika_totals($m, $from, $to, $err) : null;
+
+      $raw = ''; $rawCode = null;
+      if (metrika_ready($m) && function_exists('curl_init')) {
+          $url = 'https://api-metrika.yandex.net/stat/v1/data?' . http_build_query([
+              'ids'      => $cnt,
+              'accuracy' => 'full',
+              'date1'    => $from,
+              'date2'    => $to,
+              'metrics'  => 'ym:s:visits,ym:s:users,ym:s:pageviews,ym:s:bounceRate,'
+                          . 'ym:s:pageDepth,ym:s:avgVisitDurationSeconds',
+          ]);
+          $ch = curl_init($url);
+          curl_setopt_array($ch, [
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_TIMEOUT        => 10,
+              CURLOPT_HTTPHEADER     => ['Authorization: OAuth ' . $tok],
+          ]);
+          $raw     = (string)curl_exec($ch);
+          $rawCode = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+          curl_close($ch);
+      }
+    ?>
+    <dl class="check">
+      <?php
+        row('Период', $from . ' — ' . $to);
+        row('Код ответа', $rawCode === null ? 'запрос не делался' : (string)$rawCode, $rawCode === 200);
+        row('Разобралось', $totals ? 'да' : 'нет', (bool)$totals);
+        if ($totals) {
+            row('Визитов за 30 дней', (string)$totals['visits']);
+        }
+        row('Текст ошибки', $err !== null && $err !== '' ? $err : 'нет');
+        row('Папка для кэша', sys_get_temp_dir(), is_writable(sys_get_temp_dir()));
+      ?>
+    </dl>
+    <?php if ($raw !== '' && !$totals): ?>
+      <p class="hint">Ответ Яндекса целиком — по нему видно, что не так:</p>
+      <pre class="raw"><?= htmlspecialchars(mb_substr($raw, 0, 1200), ENT_QUOTES, 'UTF-8') ?></pre>
+    <?php endif; ?>
+  </section>
+
   <p class="hint">Страница нужна только для настройки — потом её можно удалить
     с сервера, файл <code>admin/check.php</code>.</p>
 </main>

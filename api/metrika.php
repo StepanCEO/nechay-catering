@@ -66,6 +66,20 @@ function metrika_query(array $m, array $params, ?string &$err = null): ?array
     return $data;
 }
 
+/**
+ * Итоги из ответа. В запросе без разбивки Метрика отдаёт totals плоским
+ * списком чисел — по одному на метрику: "totals": [1842, 1310, …].
+ * Вложенный вариант тоже встречается, поэтому разбираем оба.
+ */
+function metrika_totals_row(?array $d): ?array
+{
+    $t = $d['totals'] ?? null;
+    if (is_array($t) && isset($t[0]) && is_array($t[0])) {
+        $t = $t[0];
+    }
+    return is_array($t) ? $t : null;
+}
+
 /** Итоги за период: визиты, посетители, просмотры, отказы, глубина, время. */
 function metrika_totals(array $m, string $from, string $to, ?string &$err = null): ?array
 {
@@ -76,8 +90,14 @@ function metrika_totals(array $m, string $from, string $to, ?string &$err = null
         'date2'   => $to,
     ], $err);
 
-    $t = $d['totals'][0] ?? null;
-    if (!is_array($t)) {
+    $t = metrika_totals_row($d);
+    if ($t === null) {
+        // молчаливый отказ хуже ошибки: без этого админка просто рисует
+        // инструкцию по настройке, хотя настроено всё верно
+        if ($err === null && $d !== null) {
+            $err = 'Метрика ответила, но в ответе нет итогов. Ключи: '
+                 . implode(', ', array_slice(array_keys($d), 0, 8)) . '.';
+        }
         return null;
     }
     return [
@@ -129,7 +149,8 @@ function metrika_breakdown(
         'limit'      => $limit,
     ], $err);
 
-    $total = (float)($d['totals'][0] ?? 0);
+    $sum   = metrika_totals_row($d);
+    $total = (float)($sum[0] ?? 0);
     $rows  = [];
     foreach ($d['data'] ?? [] as $r) {
         $value = (float)$r['metrics'][0];
@@ -167,8 +188,8 @@ function metrika_goals(array $m, string $from, string $to, ?string &$err = null)
         'date2'   => $to,
     ], $err);
 
-    $t = $d['totals'][0] ?? null;
-    if (!is_array($t)) {
+    $t = metrika_totals_row($d);
+    if ($t === null) {
         return [];
     }
     $out = [];
