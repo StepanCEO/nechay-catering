@@ -200,13 +200,10 @@
   });
   }
 
-  /* ---------- форма заявки ---------- */
-  var WHATSAPP_NUMBER = '79624908483';
-
-  /* Куда уходит заявка. Это наш бэкенд на хостинге: он сохраняет её
-     в базу и шлёт уведомление в Telegram, WhatsApp открывается следом.
-     Если бэкенд ещё не настроен, форма всё равно работает — просто
-     откроет WhatsApp, как раньше. */
+  /* ---------- форма заявки ----------
+     Заявка уходит на бэкенд: он сохраняет её в базу и шлёт уведомление
+     в Telegram. WhatsApp при отправке больше не открывается — для него
+     есть отдельная кнопка и ссылки в контактах. */
   var FORM_ENDPOINT = '/api/lead.php';
 
   var form = document.getElementById('orderForm');
@@ -241,17 +238,6 @@
     }
     if (agree) agree.closest('.form__agree').classList.remove('is-error');
 
-    var lines = [
-      'Заявка с сайта «Нечай»',
-      'Имя: ' + name,
-      'Телефон: ' + phone,
-      'Формат: ' + form.format.value
-    ];
-    if (form.guests.value) lines.push('Гостей: ' + form.guests.value);
-    if (form.date.value) lines.push('Дата: ' + form.date.value);
-    if (form.comment.value.trim()) lines.push('Комментарий: ' + form.comment.value.trim());
-
-    // копия на почту уходит сразу, не дожидаясь действий в WhatsApp
     if (FORM_ENDPOINT) {
       var payload = {
         name: name, phone: phone, format: form.format.value,
@@ -268,14 +254,9 @@
       } catch (e) { /* старый браузер без fetch */ }
     }
 
-    var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
-    window.open(url, '_blank', 'noopener');
-
     goal('form_submit');
 
-    status.textContent = FORM_ENDPOINT
-      ? 'Заявка отправлена. Открыли WhatsApp — можно сразу написать нам.'
-      : 'Открыли WhatsApp с вашей заявкой — осталось нажать «Отправить».';
+    status.textContent = 'Заявка отправлена. Свяжемся с вами в течение рабочего дня.';
     form.reset();
   });
 
