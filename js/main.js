@@ -238,26 +238,54 @@
     }
     if (agree) agree.closest('.form__agree').classList.remove('is-error');
 
-    if (FORM_ENDPOINT) {
-      var payload = {
-        name: name, phone: phone, format: form.format.value,
-        guests: form.guests.value, date: form.date.value,
-        comment: form.comment.value.trim(),
-        _subject: 'Заявка с сайта «Нечай» — ' + name
-      };
-      try {
-        fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).catch(function () { /* почта не ушла — WhatsApp всё равно откроется */ });
-      } catch (e) { /* старый браузер без fetch */ }
+    var payload = {
+      name: name, phone: phone, format: form.format.value,
+      guests: form.guests.value, date: form.date.value,
+      comment: form.comment.value.trim(),
+      _subject: 'Заявка с сайта «Нечай» — ' + name
+    };
+
+    var submit = form.querySelector('button[type="submit"]');
+    var lock = function (on) { if (submit) submit.disabled = on; };
+
+    function failed() {
+      /* Раньше подстраховкой служил WhatsApp, который открывался сам.
+         Теперь его нет, поэтому о неудаче надо честно сказать —
+         иначе человек уйдёт уверенным, что заявка ушла. */
+      status.textContent = 'Не получилось отправить заявку. Позвоните нам: '
+                         + '+7 962 490-84-83 — или напишите в WhatsApp.';
+      lock(false);
     }
 
-    goal('form_submit');
+    function sent() {
+      goal('form_submit');
+      status.textContent = 'Заявка отправлена. Свяжемся с вами в течение рабочего дня.';
+      form.reset();
+      lock(false);
+    }
 
-    status.textContent = 'Заявка отправлена. Свяжемся с вами в течение рабочего дня.';
-    form.reset();
+    if (!FORM_ENDPOINT || typeof fetch !== 'function') {
+      failed();
+      return;
+    }
+
+    lock(true);
+    status.textContent = 'Отправляем…';
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json().catch(function () { return { ok: true }; });
+      })
+      .then(function (d) {
+        if (d && d.ok === false) throw new Error('rejected');
+        sent();
+      })
+      .catch(failed);
   });
 
   /* ---------- счётчики подписчиков ----------

@@ -41,10 +41,21 @@ function db(): PDO
                 event_date VARCHAR(20)  DEFAULT '',
                 comment    TEXT,
                 status     VARCHAR(20)  NOT NULL DEFAULT 'new',
+                deleted_at DATETIME     NULL DEFAULT NULL,
                 INDEX (created_at),
-                INDEX (status)
+                INDEX (status),
+                INDEX (deleted_at)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
         ");
+
+        /* Заявки не удаляются сразу: сначала уезжают в корзину.
+           Колонка появилась позже таблицы, поэтому дописываем её на месте. */
+        $has = $pdo->query("SHOW COLUMNS FROM leads LIKE 'deleted_at'")->fetch();
+        if (!$has) {
+            $pdo->exec('ALTER TABLE leads
+                        ADD COLUMN deleted_at DATETIME NULL DEFAULT NULL,
+                        ADD INDEX (deleted_at)');
+        }
     }
     return $pdo;
 }
