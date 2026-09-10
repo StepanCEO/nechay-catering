@@ -345,7 +345,11 @@ function render_stats(array $d): void
       <li>Вписать токен в <code>api/config.php</code>, в <code>metrika.token</code>,
           а номер счётчика — в <code>metrika.counter</code>.</li>
     </ol>
-    <p class="hint">Подробнее — в README, раздел «Админка».</p>
+    <p class="hint">
+      <a href="check.php">Проверить подключение</a> — страница покажет, какой
+      файл настроек читает сайт и что отвечает Яндекс. Подробнее — в README,
+      раздел «Админка».
+    </p>
   </section>
 <?php endif;
     page_end();
