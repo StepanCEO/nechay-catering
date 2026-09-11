@@ -459,4 +459,38 @@
     renderPf();
   }
 
+  /* ---------- уведомление про cookie ----------
+     Прямого требования показывать его в России нет, но сайт ставит
+     cookie Метрики, поэтому гостя предупреждаем. Выбор запоминается
+     в браузере: в приватном окне хранилище может быть недоступно —
+     тогда просто покажем уведомление ещё раз. */
+  var cookieNote = document.getElementById('cookieNote');
+  var cookieOk = document.getElementById('cookieOk');
+  var COOKIE_KEY = 'nechay-cookie-ok';
+
+  function remembered(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  if (cookieNote && cookieOk && !remembered(COOKIE_KEY)) {
+    cookieNote.hidden = false;
+
+    /* кнопка WhatsApp на телефоне стоит там же, внизу — сдвигаем её
+       ровно на высоту полосы, чтобы ничего не перекрывалось */
+    var lift = function () {
+      document.documentElement.style.setProperty(
+        '--cookie-h', (cookieNote.offsetHeight + 12) + 'px'
+      );
+    };
+    lift();
+    window.addEventListener('resize', lift);
+
+    cookieOk.addEventListener('click', function () {
+      cookieNote.hidden = true;
+      document.documentElement.style.removeProperty('--cookie-h');
+      window.removeEventListener('resize', lift);
+      try { localStorage.setItem(COOKIE_KEY, '1'); } catch (e) { /* приватный режим */ }
+    });
+  }
+
 })();

@@ -1134,3 +1134,38 @@ button{ font:inherit; }
   .faq__answer{ padding:0 18px 18px; }
   .faq__answer p{ font-size:14.5px; }
 }
+
+/* ============================================================
+   УВЕДОМЛЕНИЕ ПРО COOKIE
+   ============================================================ */
+.cookie{
+  position:fixed; z-index:95; left:20px; bottom:20px;
+  width:min(430px, calc(100vw - 40px));
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  padding:16px 18px;
+  background:var(--white); border:1px solid var(--line);
+  border-radius:var(--radius); box-shadow:var(--shadow-lg);
+  animation:cookie-in .45s var(--ease) both;
+}
+.cookie p{
+  flex:1 1 200px; margin:0;
+  font-size:13.5px; line-height:1.55; color:var(--ink-soft);
+}
+.cookie a{ color:var(--orange); text-decoration:underline; }
+.cookie .btn{ flex:none; }
+
+@keyframes cookie-in{
+  from{ opacity:0; transform:translateY(16px); }
+  to  { opacity:1; transform:none; }
+}
+
+/* На узком экране полоса растягивается на всю ширину и закрыла бы
+   кнопку WhatsApp — поэтому кнопка поднимается ровно на её высоту. */
+@media (max-width:700px){
+  .cookie{ left:12px; right:12px; bottom:12px; width:auto; }
+  .wa-fab{ bottom:calc(26px + var(--cookie-h, 0px)); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .cookie{ animation:none; }
+}
