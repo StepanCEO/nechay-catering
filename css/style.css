@@ -509,9 +509,19 @@ button{ font:inherit; }
 .footer__nav a:hover{ color:var(--orange-light); }
 .footer__contact{ display:flex; flex-direction:column; gap:11px; font-size:14.5px; align-items:flex-start; }
 .footer__contact a:hover{ color:var(--orange-light); }
+/* Реквизиты ИП: их требует закон о защите прав потребителей.
+   Держим мелко и приглушённо — читать их приходят редко. */
+.footer__req{ padding-top:26px; }
+.footer__req p{
+  margin:0; font-size:12.5px; line-height:1.7;
+  /* прозрачность ниже — и контраст падает до 3:1, а это текст,
+     который по закону должен читаться */
+  color:rgba(234,218,202,.62);
+}
+
 .footer__bottom{
   display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
-  padding-top:22px; font-size:13px; color:rgba(234,218,202,.55);
+  padding-top:14px; font-size:13px; color:rgba(234,218,202,.62);
 }
 
 /* ============================================================
